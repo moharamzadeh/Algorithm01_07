@@ -18,8 +18,10 @@ class Node:
         pass
 
     def getNext(self):
-        pass
+        return self.next
     
     def getPrevious(self):
-        pass
+        return self.previous
 
+    def __str__(self):
+        pass
