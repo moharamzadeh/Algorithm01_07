@@ -25,3 +25,12 @@ class LinkedListPictures:
     def __str__(self):
         pass
 
+    def __repr__(self):
+        data = []
+        node = self.pointer
+        while node != None:
+            data.append(str(node.getData()))
+            node = node.getNext()
+        data.append('None')
+        return ' > '.join(data)
+
