@@ -17,7 +17,7 @@ class Node:
         pass
 
     def getData(self):
-        return self.time
+        pass
 
     def getNext(self):
         return self.next
