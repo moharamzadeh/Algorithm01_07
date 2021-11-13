@@ -11,13 +11,13 @@ class Node:
         pass
 
     def setNext(self, next):
-        pass
+        self.next = next
 
     def setPrevious(self, previous):
         pass
 
     def getData(self):
-        pass
+        return self.time
 
     def getNext(self):
         return self.next
