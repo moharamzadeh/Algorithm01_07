@@ -1,5 +1,5 @@
+import datetime
 from src.node import Node
-from src.time import *
 
 class LinkedListPictures:
     def __init__(self, pointer=None):
