@@ -1,5 +1,7 @@
+import datetime
+
 class Node:
-    def __init__(self, time=None, tag=None, next=None, previous=None):
+    def __init__(self, time=None, tag=False, next=None, previous=None):
         self.time = time
         self.tag = tag
         self.next = next
@@ -9,7 +11,7 @@ class Node:
         pass
 
     def setNext(self, next):
-        pass
+        self.next = next
 
     def setPrevious(self, previous):
         pass
@@ -18,8 +20,10 @@ class Node:
         pass
 
     def getNext(self):
-        pass
+        return self.next
     
     def getPrevious(self):
-        pass
+        return self.previous
 
+    def __str__(self):
+        pass
