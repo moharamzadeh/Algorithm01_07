@@ -7,7 +7,8 @@ class LinkedListPictures:
         self.pointer = pointer
 
     def addFirstNode(self, node=None):
-        pass
+        node.next = self.pointer
+        self.pointer = node
 
     def addLastNode(self, node=None):
         pointer = self.pointer
