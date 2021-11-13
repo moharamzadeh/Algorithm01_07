@@ -17,7 +17,7 @@ class LinkedListPictures:
             return
         while pointer.getNext() != None:
             pointer = pointer.getNext()
-        pointer.setNext(Node(node))
+        pointer.setNext(node)
 
     def getLength(self):
         return self.length
