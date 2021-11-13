@@ -6,10 +6,10 @@ class LinkedListPictures:
         self.length = 0
         self.pointer = pointer
 
-    def addFirstData(self, node=None):
+    def addFirstNode(self, node=None):
         pass
 
-    def addLastData(self, node=None):
+    def addLastNode(self, node=None):
         pointer = self.pointer
         if pointer == None:
             self.pointer = Node(node)
