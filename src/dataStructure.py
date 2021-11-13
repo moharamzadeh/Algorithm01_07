@@ -1,5 +1,4 @@
 import datetime
-from src.node import Node
 
 class LinkedListPictures:
     length = 0
@@ -10,10 +9,10 @@ class LinkedListPictures:
         node.next = self.pointer
         self.pointer = node
 
-    def addLastNode(self, node=None):
+    def addLastNode(self, node=None):  # Error
         pointer = self.pointer
         if pointer == None:
-            self.pointer = Node(node)
+            self.pointer = node
             return
         while pointer.getNext() != None:
             pointer = pointer.getNext()
