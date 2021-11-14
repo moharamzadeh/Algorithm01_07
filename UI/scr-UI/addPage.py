@@ -171,9 +171,13 @@ class Ui_addPage(object):
         self.pushButton.setIconSize(QtCore.QSize(28, 35))
         self.pushButton.setObjectName("pushButton")
 
+        self.pushButton.clicked.connect(self.goToMainPage)
+
 
         self.retranslateUi(addPage)
         QtCore.QMetaObject.connectSlotsByName(addPage)
+
+
 
     def retranslateUi(self, addPage):
         _translate = QtCore.QCoreApplication.translate
@@ -204,7 +208,26 @@ class Ui_addPage(object):
 "And then, please push \"Add\" button."))
         self.pushButton.setText(_translate("addPage", "Add"))
 
+    def goToMainPage(self):
+        self.a = self.address.text()
+        self.y = self.yearTxt.text()
+        self.mo= self.comboBox.currentText()
+        self.d= self.dayTxt.text()
+        self.h= self.hourTxt.text()
+        self.mn= self.minTxt.text()
+        if self.radioButton.isChecked():
+            self.ev = True
+        else:
+            self.ev = False
+        addPage.close()
+        self.openMain( self.a, self.y, self.mo, self.d, self.h, self.mn, self.ev)
 
+
+    def openMain(self, a, y, mo, d, h, mn, ev):
+        self.window = QtWidgets.QWidget()
+        self.ui = Ui_mainPage()
+        self.ui.setupUi(self.window, self.a, self.y, self.mo, self.d, self.h, self.mn, self.ev)
+        self.window.show()
 
 
 if __name__ == "__main__":
