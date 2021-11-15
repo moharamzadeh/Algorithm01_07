@@ -33,8 +33,13 @@ class Node:
 	def getPrevious(self):
 		return self.previous
 
-	def __str__(self):
-		pass
+	def __cmp__(self, node):
+		for i in range(len(self.timeDate)):
+			if self.timeDate[i] > node.timeDate[i]:
+				return 1
+			elif self.timeDate[i] < node.timeDate[i]:
+				return -1
+		return 0
 
 	def __repr__(self):
 		return self.timeDate
