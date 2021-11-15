@@ -3,7 +3,7 @@ import datetime
 class Node:
     def __init__(self, address, year, month, day, hour, minute, second, tag=False, next=None, previous=None):
         self.address = address
-        self.time = datetime.time(hour=hour, minute=minute, second=second)
+        self.time = datetime.time(hour, minute, second)
         self.timeDate = [year, month, day, self.time]
         self.tag = tag
         self.next = next
