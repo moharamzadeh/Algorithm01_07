@@ -18,10 +18,10 @@ class Node:
 	def setPrevious(self, previous):
 		self.previous = previous
 
-	def getTotalSecondList(self) -> list:
-		time = datetime.timedelta(hours=self.timeDate[3].hour, minutes=self.timeDate[3].minute, seconds=self.timeDate[3].second)
+	def getTotalSecond(self) -> list:
+		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute, seconds=self.time.second)
 		totalSecond = time.total_seconds()
-		return [self.timeDate[0], self.timeDate[1], self.timeDate[2], totalSecond]
+		return totalSecond
 
 	def getData(self):
 		pass
