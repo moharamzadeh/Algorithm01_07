@@ -28,6 +28,9 @@ class Node:
 		totalSecond = time.total_seconds()
 		return totalSecond
 
+	def getTime(self):
+		return self.time
+
 	def getData(self):
 		pass
 
