@@ -28,7 +28,7 @@ class LinkedListPictures:
         data = []
         node = self.pointer
         while node != None:
-            data.append(str(node.getData()))
+            data.append(str(node.__repr__()))
             node = node.getNext()
         data.append('None')
         return ' > '.join(data)
