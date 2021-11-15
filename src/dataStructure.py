@@ -32,6 +32,9 @@ class LinkedListPictures:
 	def getLength(self):
 		return self.length
 
+	def searchNode(self, node):
+		pass
+
 	def __str__(self):
 		pass
 
