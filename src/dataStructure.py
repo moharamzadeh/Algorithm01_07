@@ -10,19 +10,17 @@ class LinkedListPictures:
 		node.next = self.pointer
 		self.pointer = node
 
-	def addNextNode(self, address, year, month, day, hour, minute, second, tag=False):  # Error
+	def addNextNode(self, address, year, month, day, hour, minute, second, tag=False): 
 		pointer = self.pointer
 		node = Node(address, year, month, day, hour, minute, second)
 		if pointer == None:
 			self.pointer = node
 			return
-		
-		n = self.pointer
 
 		while pointer.getNext() != None:
 			pointer = pointer.getNext()
 		pointer.setNext(node)
-		pointer.setPrevious(n)
+		node.setPrevious(pointer)
 
 	def getLength(self):
 		return self.length
@@ -37,5 +35,5 @@ class LinkedListPictures:
 			data.append(str(node.__repr__()))
 			node = node.getNext()
 		data.append('None')
-		return ' <> '.join(data)
+		return ' <-> '.join(data)
 
