@@ -34,3 +34,6 @@ class Node:
 
     def __str__(self):
         pass
+
+    def __repr__(self):
+        return self.timeDate
