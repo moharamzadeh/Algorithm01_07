@@ -1,9 +1,10 @@
 import datetime
 
 class Node:
-    def __init__(self, address,time=None, tag=False, next=None, previous=None):
+    def __init__(self, address, year, month, day, hour, minute, second, tag=False, next=None, previous=None):
+        time = datetime.time(hour=hour, minute=minute, second=second)
         self.address = address
-        self.time = time
+        self.timeDate = [year, month, day, time]
         self.tag = tag
         self.next = next
         self.previous = previous
