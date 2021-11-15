@@ -12,7 +12,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_delMain(object):
-    def setupUi(self, delMain):
+    def setupUi(self, delMain, y, mo, d, h, mn):
+        self.year = y
+        self.month = mo
+        self.day = d
+        self.hour = h
+        self.minute = mn
         delMain.setObjectName("delMain")
         delMain.resize(750, 600)
         delMain.setStyleSheet("background-color: rgb(238, 214, 196);")
@@ -53,10 +58,13 @@ class Ui_delMain(object):
         self.retranslateUi(delMain)
         QtCore.QMetaObject.connectSlotsByName(delMain)
 
+
     def retranslateUi(self, delMain):
         _translate = QtCore.QCoreApplication.translate
         delMain.setWindowTitle(_translate("delMain", "Form"))
         self.delButton.setText(_translate("delMain", "Delete"))
+
+    
 
 
 if __name__ == "__main__":
@@ -64,6 +72,6 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     delMain = QtWidgets.QWidget()
     ui = Ui_delMain()
-    ui.setupUi(delMain)
+    ui.setupUi(delMain, 'None', 'None', 'None', 'None', 'None', 'None', 'None')
     delMain.show()
     sys.exit(app.exec_())

@@ -101,13 +101,15 @@ class Ui_mainPage(object):
         QtCore.QMetaObject.connectSlotsByName(mainPage)
         self.timeLabel.setText(f"{self.day} {self.month} {self.year} {self.hour}:{self.minute}")
         self.checkLabel.setText(str(self.ev))
-        pixmap = QtGui.QPixmap(str(self.address))
-        self.picturePlace.setPixmap(pixmap)
+        pixmap = QtGui.QPixmap(self.address)
+        pixmapSize = pixmap.scaled(471, 421)
+        self.picturePlace.setPixmap(pixmapSize)
 
 
         self.addButton.clicked.connect(self.openAdd)
         self.delButton.clicked.connect(self.openDel)
         self.searchButton.clicked.connect(self.openSearch)
+
 
 
     def retranslateUi(self, mainPage):
