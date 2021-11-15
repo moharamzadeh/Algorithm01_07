@@ -16,7 +16,7 @@ class Node:
         self.next = next
 
     def setPrevious(self, previous):
-        pass
+        self.previous = previous
 
     def getTotalSecondList(self) -> list:
         time = datetime.timedelta(hours=self.timeDate[3].hour, minutes=self.timeDate[3].minute, seconds=self.timeDate[3].second)
