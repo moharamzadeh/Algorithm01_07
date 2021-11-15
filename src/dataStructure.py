@@ -12,7 +12,6 @@ class LinkedListPictures:
 		if pointer == None:
 			self.pointer = node
 			return
-
 		while pointer.getNext() != None:
 			pointer = pointer.getNext()
 		pointer.setNext(node)
@@ -23,7 +22,6 @@ class LinkedListPictures:
 		if pointer == None:
 			self.pointer = node
 			return
-
 		while pointer.getNext() != None:
 			pointer = pointer.getNext()
 		pointer.setNext(node)
