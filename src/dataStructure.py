@@ -2,8 +2,8 @@ import datetime
 
 class LinkedListPictures:
     length = 0
-    def __init__(self, pointer=None):
-        self.pointer = pointer
+    def __init__(self, node=None):
+        self.pointer = node
 
     def addFirstNode(self, node=None):
         node.next = self.pointer
