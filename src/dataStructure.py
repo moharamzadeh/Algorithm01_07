@@ -9,7 +9,7 @@ class LinkedListPictures:
         node.next = self.pointer
         self.pointer = node
 
-    def addLastNode(self, node=None):  # Error
+    def addNextNode(self, node=None):  # Error
         pointer = self.pointer
         if pointer == None:
             self.pointer = node
