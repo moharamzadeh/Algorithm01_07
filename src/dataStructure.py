@@ -31,11 +31,11 @@ class LinkedListPictures:
 		pass
 
 	def __repr__(self):
-		data = []
+		data = ['pointer']
 		node = self.pointer
 		while node != None:
 			data.append(str(node.__repr__()))
 			node = node.getNext()
 		data.append('None')
-		return ' > '.join(data)
+		return ' <> '.join(data)
 
