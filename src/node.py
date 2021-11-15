@@ -11,7 +11,11 @@ class Node:
 		self.previous = previous
 
 	def setData(self, address, year, month, day, hour, minute, second, tag=False):
-		pass
+		self.address = address
+		self.time = datetime.time(hour, minute, second)
+		self.timeDate = [year, month, day]
+		self.timeDate.append(self.getTotalSecond())
+		self.tag = tag
 
 	def setNext(self, next):
 		self.next = next
