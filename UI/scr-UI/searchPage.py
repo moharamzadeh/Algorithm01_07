@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from MainSearch import *
 
 
 class Ui_searchPage(object):
@@ -150,6 +151,9 @@ class Ui_searchPage(object):
         self.retranslateUi(searchPage)
         QtCore.QMetaObject.connectSlotsByName(searchPage)
 
+        self.evidenceButton.clicked.connect(self.goToMainSearchPage)
+        self.simpleSearch.clicked.connect(self.goToMainSearchPage)
+
     def retranslateUi(self, searchPage):
         _translate = QtCore.QCoreApplication.translate
         searchPage.setWindowTitle(_translate("searchPage", "Searching Page"))
@@ -173,6 +177,21 @@ class Ui_searchPage(object):
         self.label_3.setText(_translate("searchPage", "Search for a picture by its time"))
         self.label_8.setText(_translate("searchPage", "Day"))
         self.simpleSearch.setText(_translate("searchPage", "Simple Search"))
+
+    def goToMainSearchPage(self):
+        self.y = self.yearTxt.text()
+        self.mo= self.comboBox.currentText()
+        self.d= self.dayTxt.text()
+        self.h= self.hourTxt.text()
+        self.mn= self.minTxt.text()
+        self.openMainSearch(self.y, self.mo, self.d, self.h, self.mn)
+
+    def openMainSearch(self, y, mo, d, h, mn):
+        self.window = QtWidgets.QWidget()
+        self.ui = Ui_mainSearch()
+        self.ui.setupUi(self.window, self.y, self.mo, self.d, self.h, self.mn)
+        self.window.show()
+        searchPage.close()
 
 
 if __name__ == "__main__":

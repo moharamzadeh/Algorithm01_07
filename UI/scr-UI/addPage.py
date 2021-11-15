@@ -217,7 +217,7 @@ class Ui_addPage(object):
         self.mn= self.minTxt.text()
         if self.radioButton.isChecked():
             self.ev = True
-        else:
+        elif self.noRadio.isChecked:
             self.ev = False
         addPage.close()
         self.openMain( self.a, self.y, self.mo, self.d, self.h, self.mn, self.ev)

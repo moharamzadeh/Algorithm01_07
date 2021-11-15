@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainSearch.ui'
+# mainSearch implementation generated from reading ui file 'MainSearch.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,16 +11,21 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(750, 600)
-        Form.setStyleSheet("background-color: rgb(238, 214, 196);")
-        self.picturePlace = QtWidgets.QLabel(Form)
+class Ui_mainSearch(object):
+    def setupUi(self, mainSearch, y, mo, d, h, mn):
+        self.year = y
+        self.month = mo
+        self.day = d
+        self.hour = h
+        self.minute = mn
+        mainSearch.setObjectName("mainSearch")
+        mainSearch.resize(750, 600)
+        mainSearch.setStyleSheet("background-color: rgb(238, 214, 196);")
+        self.picturePlace = QtWidgets.QLabel(mainSearch)
         self.picturePlace.setGeometry(QtCore.QRect(140, 20, 471, 421))
         self.picturePlace.setText("")
         self.picturePlace.setObjectName("picturePlace")
-        self.timeLabel = QtWidgets.QLabel(Form)
+        self.timeLabel = QtWidgets.QLabel(mainSearch)
         self.timeLabel.setGeometry(QtCore.QRect(150, 460, 221, 31))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -30,7 +35,7 @@ class Ui_Form(object):
         self.timeLabel.setText("")
         self.timeLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.timeLabel.setObjectName("timeLabel")
-        self.checkLabel = QtWidgets.QLabel(Form)
+        self.checkLabel = QtWidgets.QLabel(mainSearch)
         self.checkLabel.setGeometry(QtCore.QRect(400, 460, 221, 31))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -41,19 +46,19 @@ class Ui_Form(object):
         self.checkLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.checkLabel.setObjectName("checkLabel")
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(mainSearch)
+        QtCore.QMetaObject.connectSlotsByName(mainSearch)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, mainSearch):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Searched Picture"))
+        mainSearch.setWindowTitle(_translate("mainSearch", "Searched Picture"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    mainSearch = QtWidgets.QWidget()
+    ui = Ui_mainSearch()
+    ui.setupUi(mainSearch, 'None', 'None', 'None', 'None', 'None', 'None', 'None')
+    mainSearch.show()
     sys.exit(app.exec_())

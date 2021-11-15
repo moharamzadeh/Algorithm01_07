@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from MainDel import *
 
 
 class Ui_delPage(object):
@@ -127,6 +128,8 @@ class Ui_delPage(object):
         self.yearTxt.setStyleSheet("color: rgb(231, 158, 79);")
         self.yearTxt.setObjectName("yearTxt")
 
+        self.pushButton.clicked.connect(self.goToMainDelPage)
+
         self.retranslateUi(delPage)
         QtCore.QMetaObject.connectSlotsByName(delPage)
 
@@ -152,6 +155,22 @@ class Ui_delPage(object):
         self.label_8.setText(_translate("delPage", "Day"))
         self.label_5.setText(_translate("delPage", "Year"))
         self.label_9.setText(_translate("delPage", "Hour"))
+
+    def goToMainDelPage(self):
+        self.y = self.yearTxt.text()
+        self.mo= self.comboBox.currentText()
+        self.d= self.dayTxt.text()
+        self.h= self.hourTxt.text()
+        self.mn= self.minTxt.text()
+        self.openMainDel(self.y, self.mo, self.d, self.h, self.mn)
+
+    def openMainDel(self, y, mo, d, h, mn):
+        self.window = QtWidgets.QWidget()
+        self.ui = Ui_delMain()
+        self.ui.setupUi(self.window, self.y, self.mo, self.d, self.h, self.mn)
+        self.window.show()
+        delPage.close()
+
 
 
 if __name__ == "__main__":
