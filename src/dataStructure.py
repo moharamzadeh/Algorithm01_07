@@ -18,6 +18,17 @@ class LinkedListPictures:
 		pointer.setNext(node)
 		node.setPrevious(pointer)
 
+	def addNextNode(self, node):
+		pointer = self.pointer
+		if pointer == None:
+			self.pointer = node
+			return
+
+		while pointer.getNext() != None:
+			pointer = pointer.getNext()
+		pointer.setNext(node)
+		node.setPrevious(pointer)
+
 	def getLength(self):
 		return self.length
 
