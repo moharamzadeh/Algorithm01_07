@@ -1,7 +1,8 @@
 import datetime
 
 class Node:
-    def __init__(self, time=None, tag=False, next=None, previous=None):
+    def __init__(self, address,time=None, tag=False, next=None, previous=None):
+        self.address = address
         self.time = time
         self.tag = tag
         self.next = next
