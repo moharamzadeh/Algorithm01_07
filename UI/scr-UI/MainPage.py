@@ -12,10 +12,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from delPage import *
 from addPage2 import *
 from searchPage import *
+import sys
 
 
 class Ui_mainPage(object):
-    def setupUi(self, mainPage):
+    def setupUi(self, mainPage, a, y, mo, d, h, mn, ev):
+        self.address = a
+        self.year = y
+        self.month = mo
+        self.day = d
+        self.hour = h
+        self.minute = mn
+        self.ev = ev
         mainPage.setObjectName("mainPage")
         mainPage.resize(750, 600)
         mainPage.setStyleSheet("background-color: rgb(238, 214, 196);")
@@ -91,6 +99,11 @@ class Ui_mainPage(object):
 
         self.retranslateUi(mainPage)
         QtCore.QMetaObject.connectSlotsByName(mainPage)
+        self.timeLabel.setText(f"{self.day} {self.month} {self.year} {self.hour}:{self.minute}")
+        self.checkLabel.setText(str(self.ev))
+        pixmap = QtGui.QPixmap(str(self.address))
+        self.picturePlace.setPixmap(pixmap)
+
 
         self.addButton.clicked.connect(self.openAdd)
         self.delButton.clicked.connect(self.openDel)
@@ -126,10 +139,9 @@ class Ui_mainPage(object):
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     mainPage = QtWidgets.QWidget()
     ui = Ui_mainPage()
-    ui.setupUi(mainPage)
+    ui.setupUi(mainPage, 'None', 'None', 'None', 'None', 'None', 'None', 'None')
     mainPage.show()
     sys.exit(app.exec_())
