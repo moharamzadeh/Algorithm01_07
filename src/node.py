@@ -9,7 +9,7 @@ class Node:
         self.next = next
         self.previous = previous
 
-    def setData(self, time, tag, next):
+    def setData(self, address, year, month, day, hour, minute, second, tag=False):
         pass
 
     def setNext(self, next):
