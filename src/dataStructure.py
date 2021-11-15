@@ -35,6 +35,12 @@ class LinkedListPictures:
 	def searchNode(self, node):
 		pass
 
+	def deleteNode(self, node):
+		pass
+
+	def deleteData(self, timeDate: list):
+		pass
+
 	def __str__(self):
 		pass
 
