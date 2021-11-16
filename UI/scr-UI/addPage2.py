@@ -174,7 +174,7 @@ class Ui_addPage2(object):
 		self.pushButton.setIconSize(QtCore.QSize(28, 35))
 		self.pushButton.setObjectName("pushButton")
 		
-		self.pushButton.clicked.connect(self.goToMainPage(pointer))
+		self.pushButton.clicked.connect(self.goToMainPage)
 
 
 		self.retranslateUi(addPage2)
@@ -209,7 +209,7 @@ class Ui_addPage2(object):
 "And then, please push \"Add\" button."))
 		self.pushButton.setText(_translate("addPage2", "Add"))
 
-	def goToMainPage(self , pointer2):
+	def goToMainPage(self , pointer2:LinkedListPictures):
 		self.a = self.address.text()
 		self.y = self.yearTxt.text()
 		self.mo= self.comboBox.currentText()
@@ -220,7 +220,7 @@ class Ui_addPage2(object):
 			self.ev = True
 		elif self.noRadio.isChecked:
 			self.ev = False
-		pointer2.addNextData(address= self.a, year= int(self.y) , month= self.mo, day= int(self.d), hour= int(self.h), minute= int(self.mn), second=0, tag= self.ev)
+		pointer2.addNextData(address= self.a, year= int(self.y) , month= self.mo, day= int(self.d), hour= int(self.h), minute= int(self.mn), second=0, tag= str(self.ev))
 		
 		
 

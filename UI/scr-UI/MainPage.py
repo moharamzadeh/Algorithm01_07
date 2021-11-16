@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+# from addPage import *
 from delPage import *
 from addPage2 import *
 from searchPage import *
@@ -19,7 +20,13 @@ from dataStructure import *
 
 class Ui_mainPage(object):
     def setupUi(self, mainPage, address, year, month, day, hour, minute, ev):
-
+        self.address = address
+        self.year = int(year)
+        self.month = month
+        self.day = int(day)
+        self.hour = int(hour)
+        self.minute = int(minute)
+        self.ev = ev
         listNode = Node(address, int(year), month, int(day), int(hour), int(minute), int(0), ev)
         self.pointer = LinkedListPictures(listNode)
         print(self.pointer.__repr__())
@@ -143,6 +150,6 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     mainPage = QtWidgets.QWidget()
     ui = Ui_mainPage()
-    ui.setupUi(mainPage, 'None', 'None', 'None', 'None', 'None', 'None', 'None')
+    ui.setupUi(mainPage, 'None', 0, 'None', 0, 0, 0, 'None')
     mainPage.show()
     sys.exit(app.exec_())

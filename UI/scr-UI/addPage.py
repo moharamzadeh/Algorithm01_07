@@ -98,7 +98,7 @@ class Ui_addPage(object):
         font.setPointSize(10)
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("\n"
-"color: rgb(231, 158, 79);")
+        "color: rgb(231, 158, 79);")
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
         self.label = QtWidgets.QLabel(addPage)
@@ -107,7 +107,7 @@ class Ui_addPage(object):
         font.setPointSize(14)
         self.label.setFont(font)
         self.label.setStyleSheet("\n"
-"color: rgb(231, 158, 79);")
+        "color: rgb(231, 158, 79);")
         self.label.setObjectName("label")
         self.label_3 = QtWidgets.QLabel(addPage)
         self.label_3.setGeometry(QtCore.QRect(9, 184, 82, 23))
@@ -115,7 +115,7 @@ class Ui_addPage(object):
         font.setPointSize(14)
         self.label_3.setFont(font)
         self.label_3.setStyleSheet("\n"
-"color: rgb(231, 158, 79);")
+        "color: rgb(231, 158, 79);")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(addPage)
         self.label_4.setEnabled(True)
@@ -124,7 +124,7 @@ class Ui_addPage(object):
         font.setPointSize(10)
         self.label_4.setFont(font)
         self.label_4.setStyleSheet("\n"
-"color: rgb(231, 158, 79);")
+        "color: rgb(231, 158, 79);")
         self.label_4.setObjectName("label_4")
         self.address = QtWidgets.QLineEdit(addPage)
         self.address.setGeometry(QtCore.QRect(135, 44, 671, 29))
@@ -139,7 +139,7 @@ class Ui_addPage(object):
         font.setPointSize(14)
         self.radioButton.setFont(font)
         self.radioButton.setStyleSheet("\n"
-"color: rgb(231, 158, 79);")
+        "color: rgb(231, 158, 79);")
         self.radioButton.setObjectName("radioButton")
         self.noRadio = QtWidgets.QRadioButton(addPage)
         self.noRadio.setGeometry(QtCore.QRect(280, 184, 46, 27))
@@ -147,7 +147,7 @@ class Ui_addPage(object):
         font.setPointSize(14)
         self.noRadio.setFont(font)
         self.noRadio.setStyleSheet("\n"
-"color: rgb(231, 158, 79);")
+        "color: rgb(231, 158, 79);")
         self.noRadio.setObjectName("noRadio")
         self.label_8 = QtWidgets.QLabel(addPage)
         self.label_8.setGeometry(QtCore.QRect(10, 220, 691, 81))
@@ -165,8 +165,8 @@ class Ui_addPage(object):
         self.pushButton = QtWidgets.QPushButton(addPage)
         self.pushButton.setGeometry(QtCore.QRect(710, 240, 151, 43))
         self.pushButton.setStyleSheet("color: rgb(50, 31, 40);\n"
-"background-color: #E79E4F;\n"
-"font: 75 14pt \"MS Shell Dlg 2\";")
+        "background-color: #E79E4F;\n"
+        "font: 75 14pt \"MS Shell Dlg 2\";")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Icons/add01.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon)
