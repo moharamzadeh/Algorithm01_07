@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from MainPage import *
+from node import *
+from dataStructure import *
 
 
 class Ui_addPage(object):

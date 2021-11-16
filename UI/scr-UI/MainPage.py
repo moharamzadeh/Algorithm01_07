@@ -13,17 +13,16 @@ from delPage import *
 from addPage2 import *
 from searchPage import *
 import sys
+from node import *
+from dataStructure import *
 
 
 class Ui_mainPage(object):
-    def setupUi(self, mainPage, a, y, mo, d, h, mn, ev):
-        self.address = a
-        self.year = y
-        self.month = mo
-        self.day = d
-        self.hour = h
-        self.minute = mn
-        self.ev = ev
+    def setupUi(self, mainPage, address, year, month, day, hour, minute, ev):
+
+        listNode = Node(address, int(year), month, int(day), int(hour), int(minute), int(0), ev)
+        self.pointer = LinkedListPictures(listNode)
+        print(self.pointer.__repr__())
         mainPage.setObjectName("mainPage")
         mainPage.resize(750, 600)
         mainPage.setStyleSheet("background-color: rgb(238, 214, 196);")
@@ -99,9 +98,9 @@ class Ui_mainPage(object):
 
         self.retranslateUi(mainPage)
         QtCore.QMetaObject.connectSlotsByName(mainPage)
-        self.timeLabel.setText(f"{self.day} {self.month} {self.year} {self.hour}:{self.minute}")
-        self.checkLabel.setText(str(self.ev))
-        pixmap = QtGui.QPixmap(self.address)
+        # self.timeLabel.setText(f"{self.day} {self.month} {self.year} {self.hour}:{self.minute}")
+        # self.checkLabel.setText(str(self.ev))
+        pixmap = QtGui.QPixmap(listNode.address)
         pixmapSize = pixmap.scaled(471, 421)
         self.picturePlace.setPixmap(pixmapSize)
 
@@ -124,7 +123,7 @@ class Ui_mainPage(object):
     def openAdd(self):
         self.window = QtWidgets.QWidget()
         self.ui = Ui_addPage2()
-        self.ui.setupUi(self.window)
+        self.ui.setupUi(self.window, self.pointer)
         self.window.show()
 
     def openDel(self):
