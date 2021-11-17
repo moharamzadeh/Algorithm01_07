@@ -41,9 +41,9 @@ class Node:
 	def setPrevious(self, previous):
 		self.previous = previous
 
-	def getTotalSecond(self) -> list:
+	def getTotalSecond(self) -> int:
 		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute)
-		totalSecond = time.total_seconds()
+		totalSecond = int(time.total_seconds())
 		return totalSecond
 
 	def getTime(self):
@@ -54,7 +54,7 @@ class Node:
 
 	def getNext(self):
 		return self.next
-	
+
 	def getPrevious(self):
 		return self.previous
 
