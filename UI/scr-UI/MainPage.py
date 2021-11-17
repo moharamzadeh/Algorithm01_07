@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainPage.ui'
+# Form implementation generated from reading ui file '.\MainPage.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -9,141 +9,303 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from delPage import *
-from addPage2 import *
-from searchPage import *
+from searchPage import Ui_searchPage
+from delPage import Ui_delPage
+from node import *
+from dataStructure import *
 import sys
 
 
+
+
 class Ui_mainPage(object):
-    def setupUi(self, mainPage, a, y, mo, d, h, mn, ev):
-        self.address = a
-        self.year = y
-        self.month = mo
-        self.day = d
-        self.hour = h
-        self.minute = mn
-        self.ev = ev
-        mainPage.setObjectName("mainPage")
-        mainPage.resize(750, 600)
-        mainPage.setStyleSheet("background-color: rgb(238, 214, 196);")
-        self.picturePlace = QtWidgets.QLabel(mainPage)
-        self.picturePlace.setGeometry(QtCore.QRect(140, 20, 471, 421))
-        self.picturePlace.setText("")
-        self.picturePlace.setObjectName("picturePlace")
-        self.timeLabel = QtWidgets.QLabel(mainPage)
-        self.timeLabel.setGeometry(QtCore.QRect(150, 460, 221, 31))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.timeLabel.setFont(font)
-        self.timeLabel.setText("")
-        self.timeLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.timeLabel.setObjectName("timeLabel")
-        self.checkLabel = QtWidgets.QLabel(mainPage)
-        self.checkLabel.setGeometry(QtCore.QRect(400, 460, 221, 31))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.checkLabel.setFont(font)
-        self.checkLabel.setText("")
-        self.checkLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.checkLabel.setObjectName("checkLabel")
-        self.preButton = QtWidgets.QPushButton(mainPage)
-        self.preButton.setGeometry(QtCore.QRect(10, 230, 111, 51))
-        self.preButton.setStyleSheet("background-color: rgb(72, 52, 52);\n"
-"color: rgb(255, 243, 228);")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Icons/623176_arrow_bold_dual_left_back_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.preButton.setIcon(icon)
-        self.preButton.setIconSize(QtCore.QSize(40, 40))
-        self.preButton.setObjectName("preButton")
-        self.nextButton = QtWidgets.QPushButton(mainPage)
-        self.nextButton.setGeometry(QtCore.QRect(630, 230, 111, 51))
-        self.nextButton.setStyleSheet("background-color: rgb(72, 52, 52);\n"
-"color: rgb(255, 243, 228);")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Icons/623175_arrow_bold_dual_right_direction_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.nextButton.setIcon(icon1)
-        self.nextButton.setIconSize(QtCore.QSize(40, 40))
-        self.nextButton.setObjectName("nextButton")
-        self.searchButton = QtWidgets.QPushButton(mainPage)
-        self.searchButton.setGeometry(QtCore.QRect(150, 520, 111, 51))
-        self.searchButton.setStyleSheet("background-color: rgb(72, 52, 52);\n"
-"color: rgb(255, 243, 228);")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Icons/103797_viewer_image_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.searchButton.setIcon(icon2)
-        self.searchButton.setIconSize(QtCore.QSize(40, 40))
-        self.searchButton.setObjectName("searchButton")
-        self.delButton = QtWidgets.QPushButton(mainPage)
-        self.delButton.setGeometry(QtCore.QRect(330, 520, 111, 51))
-        self.delButton.setStyleSheet("background-color: rgb(72, 52, 52);\n"
-"color: rgb(255, 243, 228);")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("Icons/103476_cancel_image_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.delButton.setIcon(icon3)
-        self.delButton.setIconSize(QtCore.QSize(30, 30))
-        self.delButton.setObjectName("delButton")
-        self.addButton = QtWidgets.QPushButton(mainPage)
-        self.addButton.setGeometry(QtCore.QRect(510, 520, 111, 51))
-        self.addButton.setStyleSheet("background-color: rgb(72, 52, 52);\n"
-"color: rgb(255, 243, 228);")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("Icons/add01.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.addButton.setIcon(icon4)
-        self.addButton.setIconSize(QtCore.QSize(35, 35))
-        self.addButton.setObjectName("addButton")
+	def setupUi(self, mainPage):
+		self.counter= 0
+		mainPage.setObjectName("mainPage")
+		mainPage.resize(900, 850)
+		mainPage.setStyleSheet("background-color: rgb(50, 31, 40);")
+		self.picturePlace = QtWidgets.QLabel(mainPage)
+		self.picturePlace.setGeometry(QtCore.QRect(212, 310, 480, 430))
+		self.picturePlace.setText("")
+		self.picturePlace.setObjectName("picturePlace")
+		self.timeLabel = QtWidgets.QLabel(mainPage)
+		self.timeLabel.setGeometry(QtCore.QRect(220, 750, 231, 31))
+		font = QtGui.QFont()
+		font.setPointSize(11)
+		font.setBold(True)
+		font.setWeight(75)
+		self.timeLabel.setFont(font)
+		self.timeLabel.setStyleSheet("color: rgb(255, 243, 228);")
+		self.timeLabel.setText("")
+		self.timeLabel.setAlignment(QtCore.Qt.AlignCenter)
+		self.timeLabel.setObjectName("timeLabel")
+		self.checkLabel = QtWidgets.QLabel(mainPage)
+		self.checkLabel.setGeometry(QtCore.QRect(470, 750, 221, 31))
+		font = QtGui.QFont()
+		font.setPointSize(11)
+		font.setBold(True)
+		font.setWeight(75)
+		self.checkLabel.setFont(font)
+		self.checkLabel.setStyleSheet("color: rgb(255, 243, 228);")
+		self.checkLabel.setText("")
+		self.checkLabel.setAlignment(QtCore.Qt.AlignCenter)
+		self.checkLabel.setObjectName("checkLabel")
+		self.searchButton = QtWidgets.QPushButton(mainPage)
+		self.searchButton.setGeometry(QtCore.QRect(30, 470, 130, 50))
+		self.searchButton.setStyleSheet("color: rgb(50, 31, 40);\n"
+"background-color: #E79E4F;\n"
+"font: 75 14pt \"MS Shell Dlg 2\";")
+		icon = QtGui.QIcon()
+		icon.addPixmap(QtGui.QPixmap("Icons/103797_viewer_image_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.searchButton.setIcon(icon)
+		self.searchButton.setIconSize(QtCore.QSize(40, 40))
+		self.searchButton.setObjectName("searchButton")
+		self.delButton = QtWidgets.QPushButton(mainPage)
+		self.delButton.setGeometry(QtCore.QRect(740, 470, 130, 50))
+		self.delButton.setStyleSheet("color: rgb(50, 31, 40);\n"
+"background-color: #E79E4F;\n"
+"font: 75 14pt \"MS Shell Dlg 2\";")
+		icon1 = QtGui.QIcon()
+		icon1.addPixmap(QtGui.QPixmap("Icons/103476_cancel_image_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.delButton.setIcon(icon1)
+		self.delButton.setIconSize(QtCore.QSize(30, 30))
+		self.delButton.setObjectName("delButton")
+		self.label_6 = QtWidgets.QLabel(mainPage)
+		self.label_6.setGeometry(QtCore.QRect(662, 110, 38, 16))
+		font = QtGui.QFont()
+		font.setPointSize(10)
+		self.label_6.setFont(font)
+		self.label_6.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label_6.setObjectName("label_6")
+		self.label_4 = QtWidgets.QLabel(mainPage)
+		self.label_4.setEnabled(True)
+		self.label_4.setGeometry(QtCore.QRect(120, 110, 26, 16))
+		font = QtGui.QFont()
+		font.setPointSize(10)
+		self.label_4.setFont(font)
+		self.label_4.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label_4.setObjectName("label_4")
+		self.label = QtWidgets.QLabel(mainPage)
+		self.label.setGeometry(QtCore.QRect(26, 36, 73, 23))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.label.setFont(font)
+		self.label.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label.setObjectName("label")
+		self.address = QtWidgets.QLineEdit(mainPage)
+		self.address.setGeometry(QtCore.QRect(152, 36, 671, 29))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.address.setFont(font)
+		self.address.setStyleSheet("color: rgb(231, 158, 79);")
+		self.address.setObjectName("address")
+		self.noRadio = QtWidgets.QRadioButton(mainPage)
+		self.noRadio.setGeometry(QtCore.QRect(297, 176, 46, 27))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.noRadio.setFont(font)
+		self.noRadio.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.noRadio.setObjectName("noRadio")
+		self.label_9 = QtWidgets.QLabel(mainPage)
+		self.label_9.setGeometry(QtCore.QRect(361, 110, 21, 16))
+		font = QtGui.QFont()
+		font.setPointSize(10)
+		self.label_9.setFont(font)
+		self.label_9.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label_9.setAlignment(QtCore.Qt.AlignCenter)
+		self.label_9.setObjectName("label_9")
+		self.label_5 = QtWidgets.QLabel(mainPage)
+		self.label_5.setGeometry(QtCore.QRect(509, 110, 27, 16))
+		font = QtGui.QFont()
+		font.setPointSize(10)
+		self.label_5.setFont(font)
+		self.label_5.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label_5.setAlignment(QtCore.Qt.AlignCenter)
+		self.label_5.setObjectName("label_5")
+		self.radioButton = QtWidgets.QRadioButton(mainPage)
+		self.radioButton.setGeometry(QtCore.QRect(232, 176, 52, 27))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.radioButton.setFont(font)
+		self.radioButton.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.radioButton.setObjectName("radioButton")
+		self.hourTxt = QtWidgets.QLineEdit(mainPage)
+		self.hourTxt.setGeometry(QtCore.QRect(542, 106, 114, 29))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.hourTxt.setFont(font)
+		self.hourTxt.setStyleSheet("color: rgb(231, 158, 79);")
+		self.hourTxt.setObjectName("hourTxt")
+		self.yearTxt = QtWidgets.QLineEdit(mainPage)
+		self.yearTxt.setGeometry(QtCore.QRect(152, 106, 74, 29))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.yearTxt.setFont(font)
+		self.yearTxt.setStyleSheet("color: rgb(231, 158, 79);")
+		self.yearTxt.setObjectName("yearTxt")
+		self.label_3 = QtWidgets.QLabel(mainPage)
+		self.label_3.setGeometry(QtCore.QRect(26, 176, 82, 23))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.label_3.setFont(font)
+		self.label_3.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label_3.setObjectName("label_3")
+		self.dayTxt = QtWidgets.QLineEdit(mainPage)
+		self.dayTxt.setGeometry(QtCore.QRect(388, 106, 115, 29))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.dayTxt.setFont(font)
+		self.dayTxt.setStyleSheet("color: rgb(231, 158, 79);")
+		self.dayTxt.setObjectName("dayTxt")
+		self.label_8 = QtWidgets.QLabel(mainPage)
+		self.label_8.setGeometry(QtCore.QRect(27, 212, 691, 81))
+		font = QtGui.QFont()
+		font.setPointSize(8)
+		font.setBold(True)
+		font.setItalic(False)
+		font.setUnderline(False)
+		font.setWeight(75)
+		font.setStrikeOut(False)
+		self.label_8.setFont(font)
+		self.label_8.setStyleSheet("color: rgb(255, 243, 228);")
+		self.label_8.setAlignment(QtCore.Qt.AlignCenter)
+		self.label_8.setObjectName("label_8")
+		self.comboBox = QtWidgets.QComboBox(mainPage)
+		self.comboBox.setGeometry(QtCore.QRect(232, 107, 123, 27))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.comboBox.setFont(font)
+		self.comboBox.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.comboBox.setObjectName("comboBox")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.comboBox.addItem("")
+		self.pushButton = QtWidgets.QPushButton(mainPage)
+		self.pushButton.setGeometry(QtCore.QRect(740, 230, 130, 50))
+		self.pushButton.setStyleSheet("color: rgb(50, 31, 40);\n"
+"background-color: #E79E4F;\n"
+"font: 75 14pt \"MS Shell Dlg 2\";")
+		icon2 = QtGui.QIcon()
+		icon2.addPixmap(QtGui.QPixmap("Icons/add01.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		self.pushButton.setIcon(icon2)
+		self.pushButton.setIconSize(QtCore.QSize(28, 35))
+		self.pushButton.setObjectName("pushButton")
+		self.label_2 = QtWidgets.QLabel(mainPage)
+		self.label_2.setGeometry(QtCore.QRect(26, 106, 48, 23))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.label_2.setFont(font)
+		self.label_2.setStyleSheet("\n"
+"color: rgb(231, 158, 79);")
+		self.label_2.setObjectName("label_2")
+		self.minTxt = QtWidgets.QLineEdit(mainPage)
+		self.minTxt.setGeometry(QtCore.QRect(706, 106, 115, 29))
+		font = QtGui.QFont()
+		font.setPointSize(14)
+		self.minTxt.setFont(font)
+		self.minTxt.setStyleSheet("color: rgb(231, 158, 79);")
+		self.minTxt.setObjectName("minTxt")
 
-        self.retranslateUi(mainPage)
-        QtCore.QMetaObject.connectSlotsByName(mainPage)
-        self.timeLabel.setText(f"{self.day} {self.month} {self.year} {self.hour}:{self.minute}")
-        self.checkLabel.setText(str(self.ev))
-        pixmap = QtGui.QPixmap(self.address)
-        pixmapSize = pixmap.scaled(471, 421)
-        self.picturePlace.setPixmap(pixmapSize)
+		self.retranslateUi(mainPage)
+		QtCore.QMetaObject.connectSlotsByName(mainPage)
 
+		self.delButton.clicked.connect(self.openDel)
+		self.searchButton.clicked.connect(self.openSearch)
+		self.pushButton.clicked.connect(self.addingPic)
 
-        self.addButton.clicked.connect(self.openAdd)
-        self.delButton.clicked.connect(self.openDel)
-        self.searchButton.clicked.connect(self.openSearch)
+	def retranslateUi(self, mainPage):
+		_translate = QtCore.QCoreApplication.translate
+		mainPage.setWindowTitle(_translate("mainPage", "Main Page"))
+		self.searchButton.setText(_translate("mainPage", "Search"))
+		self.delButton.setText(_translate("mainPage", "Delete"))
+		self.label_6.setText(_translate("mainPage", "Minute"))
+		self.label_4.setText(_translate("mainPage", "Year"))
+		self.label.setText(_translate("mainPage", "Address:"))
+		self.noRadio.setText(_translate("mainPage", "No"))
+		self.label_9.setText(_translate("mainPage", "Day"))
+		self.label_5.setText(_translate("mainPage", "Hour"))
+		self.radioButton.setText(_translate("mainPage", "Yes"))
+		self.label_3.setText(_translate("mainPage", "Evidence:"))
+		self.label_8.setText(_translate("mainPage", "Please insert the exact address of yourpicture( your jpg or png must be included in the address) and the time it was taken.\n"
+"If the picture can be used as an evidence, please check yes and no if it\'s otherwised.\n"
+"And then, please push \"Add\" button."))
+		self.comboBox.setItemText(0, _translate("mainPage", "January"))
+		self.comboBox.setItemText(1, _translate("mainPage", "February"))
+		self.comboBox.setItemText(2, _translate("mainPage", "March"))
+		self.comboBox.setItemText(3, _translate("mainPage", "April"))
+		self.comboBox.setItemText(4, _translate("mainPage", "May"))
+		self.comboBox.setItemText(5, _translate("mainPage", "June"))
+		self.comboBox.setItemText(6, _translate("mainPage", "July"))
+		self.comboBox.setItemText(7, _translate("mainPage", "August"))
+		self.comboBox.setItemText(8, _translate("mainPage", "September"))
+		self.comboBox.setItemText(9, _translate("mainPage", "October"))
+		self.comboBox.setItemText(10, _translate("mainPage", "November"))
+		self.comboBox.setItemText(11, _translate("mainPage", "December"))
+		self.pushButton.setText(_translate("mainPage", "Add"))
+		self.label_2.setText(_translate("mainPage", "Time:"))
 
+	def addingPic(self):
+		self.addressTxt = self.address.text()
+		pixmap = QtGui.QPixmap(self.addressTxt)
+		pixmapSize = pixmap.scaled(480, 430)
+		self.picturePlace.setPixmap(pixmapSize)
+		self.a = self.address.text()
+		self.y = self.yearTxt.text()
+		self.mo= self.comboBox.currentText()
+		self.d= self.dayTxt.text()
+		self.h= self.hourTxt.text()
+		self.mn= self.minTxt.text()
+		if self.radioButton.isChecked():
+			self.ev = True
+		elif self.noRadio.isChecked:
+			self.ev = False
+		self.timeLabel.setText(f"{self.d} {self.mo} {self.y} {self.h}:{self.mn}")
+		self.checkLabel.setText(str(self.ev))
+		
+		if self.counter == 0:
+			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), 0, self.ev)
+			self.l1 = LinkedListPictures(pointer)
+			self.counter += 1
+		elif self.counter >= 1:
+			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), 0, self.ev)
+			self.l1.addNextData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), 0, self.ev)
+		print(self.l1.__repr__())
 
+	def openDel(self):
+		self.window = QtWidgets.QWidget()
+		self.ui = Ui_delPage()
+		self.ui.setupUi(self.window)
+		self.window.show()
 
-    def retranslateUi(self, mainPage):
-        _translate = QtCore.QCoreApplication.translate
-        mainPage.setWindowTitle(_translate("mainPage", "Main Page"))
-        self.preButton.setText(_translate("mainPage", "Previous"))
-        self.nextButton.setText(_translate("mainPage", "Next"))
-        self.searchButton.setText(_translate("mainPage", "Search"))
-        self.delButton.setText(_translate("mainPage", "Delete"))
-        self.addButton.setText(_translate("mainPage", "Add"))
-
-    def openAdd(self):
-        self.window = QtWidgets.QWidget()
-        self.ui = Ui_addPage2()
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    def openDel(self):
-        self.window = QtWidgets.QWidget()
-        self.ui = Ui_delPage()
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    def openSearch(self):
-        self.window = QtWidgets.QWidget()
-        self.ui = Ui_searchPage()
-        self.ui.setupUi(self.window)
-        self.window.show()
+	def openSearch(self):
+		self.window = QtWidgets.QWidget()
+		self.ui = Ui_searchPage()
+		self.ui.setupUi(self.window)
+		self.window.show()
 
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    mainPage = QtWidgets.QWidget()
-    ui = Ui_mainPage()
-    ui.setupUi(mainPage, 'None', 'None', 'None', 'None', 'None', 'None', 'None')
-    mainPage.show()
-    sys.exit(app.exec_())
+	app = QtWidgets.QApplication(sys.argv)
+	mainPage = QtWidgets.QWidget()
+	ui = Ui_mainPage()
+	ui.setupUi(mainPage)
+	mainPage.show()
+	sys.exit(app.exec_())
