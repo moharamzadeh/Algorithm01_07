@@ -23,8 +23,8 @@ class Node:
 	def setData(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
 		self.time = datetime.time(hour, minute)
-		self.timeDate = [year, month, day]
-		self.timeDate.append(self.getTotalSecond())
+		self.timeDate = []
+		self.setTimeDate(year=year, month=month, day=day)
 		self.tag = tag
 
 	def changeDateToInt(self, month: str):
