@@ -1,14 +1,14 @@
 import datetime
 
 class Node:
-	def __init__(self, address, year, month, day, hour, minute, tag=False, next=None, previous=None):
+	def __init__(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
 		self.time = datetime.time(hour, minute)
 		self.timeDate = []
 		self.setTimeDate(year=year, month=month, day=day)
 		self.tag = tag
-		self.next = next
-		self.previous = previous
+		self.next = None
+		self.previous = None
 
 	def setTimeDate(self, year, month, day):
 		self.timeDate = [year]
