@@ -1,21 +1,39 @@
 import datetime
 
 class Node:
-	def __init__(self, address, year, month, day, hour, minute, second, tag=False, next=None, previous=None):
+	def __init__(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
-		self.time = datetime.time(hour, minute, second)
-		self.timeDate = [year, month, day]
-		self.timeDate.append(self.getTotalSecond())
+		self.time = datetime.time(hour, minute)
+		self.timeDate = []
+		self.setTimeDate(year=year, month=month, day=day)
 		self.tag = tag
-		self.next = next
-		self.previous = previous
+		self.next = None
+		self.previous = None
 
-	def setData(self, address, year, month, day, hour, minute, second, tag=False):
-		self.address = address
-		self.time = datetime.time(hour, minute, second)
-		self.timeDate = [year, month, day]
+	def setTimeDate(self, year, month, day):
+		self.timeDate = [year]
+		if isinstance(month, int):
+			self.timeDate.append(month)
+		else:
+			self.timeDate.append(self.changeDateToInt(month))
+		self.timeDate.append(day)
 		self.timeDate.append(self.getTotalSecond())
+
+
+	def setData(self, address, year, month, day, hour, minute, tag=False):
+		self.address = address
+		self.time = datetime.time(hour, minute)
+		self.timeDate = []
+		self.setTimeDate(year=year, month=month, day=day)
 		self.tag = tag
+
+	def changeDateToInt(self, month: str):
+		listMonth = {'january': 1,'february': 2, 'march':3, 'april': 4, 'may': 5, 'june': 6, 'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12}
+		return listMonth[month.lower()]
+
+	def changeIntToDate(self, month: int):
+		listMonth = {1: 'january', 2: 'february', 3: 'march', 4: 'april', 5: 'may', 6: 'june', 7: 'july', 8: 'august', 9: 'september', 10: 'october', 11: 'november', 12: 'december'}
+		return listMonth[month]
 
 	def setNext(self, next):
 		self.next = next
@@ -23,10 +41,10 @@ class Node:
 	def setPrevious(self, previous):
 		self.previous = previous
 
-	def getTotalSecond(self) -> list:
-		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute, seconds=self.time.second)
+	def getTotalSecond(self) -> int:
+		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute)
 		totalSecond = time.total_seconds()
-		return totalSecond
+		return int(totalSecond)
 
 	def getTime(self):
 		return self.time
@@ -36,7 +54,7 @@ class Node:
 
 	def getNext(self):
 		return self.next
-	
+
 	def getPrevious(self):
 		return self.previous
 

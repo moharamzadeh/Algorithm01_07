@@ -6,9 +6,9 @@ class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
 
-	def addNextData(self, address, year, month, day, hour, minute, second, tag=False): 
+	def addNextData(self, address, year, month, day, hour, minute, tag=False): 
 		pointer = self.pointer
-		node = Node(address, year, month, day, hour, minute, second)
+		node = Node(address, year, month, day, hour, minute, tag=False)
 		if pointer == None:
 			self.pointer = node
 			return
@@ -31,7 +31,12 @@ class LinkedListPictures:
 		return self.length
 
 	def searchNode(self, node):
-		pass
+		temp = self.pointer
+		while  temp.__cmp__(node) < 0 :
+			temp = temp.next
+		if temp.__cmp__(node) > 0: 
+			return temp.previous
+		return temp
 
 	def deleteNode(self, node):
 		pass
