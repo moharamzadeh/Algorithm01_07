@@ -1,3 +1,5 @@
 /src/__pycache__/
 /src/node.pyc
 UI/scr-UI/__pycache__/
+UI/scr-UI/node.py
+UI/scr_UI/dataStructure.py
