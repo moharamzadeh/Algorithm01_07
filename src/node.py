@@ -1,21 +1,39 @@
 import datetime
 
 class Node:
-	def __init__(self, address, year, month, day, hour, minute, second, tag=False, next=None, previous=None):
+	def __init__(self, address, year, month, day, hour, minute, tag=False, next=None, previous=None):
 		self.address = address
-		self.time = datetime.time(hour, minute, second)
-		self.timeDate = [year, month, day]
-		self.timeDate.append(self.getTotalSecond())
+		self.time = datetime.time(hour, minute)
+		self.timeDate = []
+		self.setTimeDate(year=year, month=month, day=day)
 		self.tag = tag
 		self.next = next
 		self.previous = previous
 
-	def setData(self, address, year, month, day, hour, minute, second, tag=False):
+	def setTimeDate(self, year, month, day):
+		self.timeDate = [year]
+		if isinstance(month, int):
+			self.timeDate.append(month)
+		else:
+			self.timeDate.append(self.changeDateToInt(month))
+		self.timeDate.append(day)
+		self.timeDate.append(self.getTotalSecond())
+
+
+	def setData(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
-		self.time = datetime.time(hour, minute, second)
+		self.time = datetime.time(hour, minute)
 		self.timeDate = [year, month, day]
 		self.timeDate.append(self.getTotalSecond())
 		self.tag = tag
+
+	def changeDateToInt(self, month: str):
+		listMonth = {'January': 1,'February': 2, 'March':3, 'April': 4, 'May': 5, 'June': 6, 'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12}
+		return listMonth[month]
+	
+	def changeIntToDate(self, month: int):
+		listMonth = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
+		return listMonth[month]
 
 	def setNext(self, next):
 		self.next = next
@@ -24,7 +42,7 @@ class Node:
 		self.previous = previous
 
 	def getTotalSecond(self) -> list:
-		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute, seconds=self.time.second)
+		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute)
 		totalSecond = time.total_seconds()
 		return totalSecond
 

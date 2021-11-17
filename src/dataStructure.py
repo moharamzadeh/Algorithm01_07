@@ -6,9 +6,9 @@ class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
 
-	def addNextData(self, address, year, month, day, hour, minute, second, tag=False): 
+	def addNextData(self, address, year, month, day, hour, minute, tag=False): 
 		pointer = self.pointer
-		node = Node(address, year, month, day, hour, minute, second, tag=False)
+		node = Node(address, year, month, day, hour, minute, tag=False)
 		if pointer == None:
 			self.pointer = node
 			return
