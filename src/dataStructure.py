@@ -1,4 +1,6 @@
 import datetime
+import sys
+sys.path.append("F:\tamrin7\Algorithm01_07")
 from node import *
 
 class LinkedListPictures:
@@ -31,7 +33,12 @@ class LinkedListPictures:
 		return self.length
 
 	def searchNode(self, node):
-		pass
+		temp = self.pointer
+		while  temp.__cmp__(node) < 0 :
+			temp = temp.next
+		if temp.__cmp__(node) > 0: 
+			return temp.previous
+		return temp
 
 	def deleteNode(self, node):
 		pass
