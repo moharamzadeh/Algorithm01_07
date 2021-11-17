@@ -281,12 +281,12 @@ class Ui_mainPage(object):
 		self.checkLabel.setText(str(self.ev))
 		
 		if self.counter == 0:
-			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), 0, self.ev)
+			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 			self.l1 = LinkedListPictures(pointer)
 			self.counter += 1
 		elif self.counter >= 1:
-			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), 0, self.ev)
-			self.l1.addNextData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), 0, self.ev)
+			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
+			self.l1.addNextData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 		print(self.l1.__repr__())
 
 	def openDel(self):
