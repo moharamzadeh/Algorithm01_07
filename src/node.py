@@ -43,8 +43,8 @@ class Node:
 
 	def getTotalSecond(self) -> int:
 		time = datetime.timedelta(hours=self.time.hour, minutes=self.time.minute)
-		totalSecond = int(time.total_seconds())
-		return totalSecond
+		totalSecond = time.total_seconds()
+		return int(totalSecond)
 
 	def getTime(self):
 		return self.time
