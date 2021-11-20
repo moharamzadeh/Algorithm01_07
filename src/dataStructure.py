@@ -34,6 +34,8 @@ class LinkedListPictures:
 		temp = self.pointer
 		while  temp.__cmp__(node) < 0 :
 			temp = temp.next
+			if temp == None :
+				return temp.previous
 		if temp.__cmp__(node) > 0: 
 			return temp.previous
 		return temp
