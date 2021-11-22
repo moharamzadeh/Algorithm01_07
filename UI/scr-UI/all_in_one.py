@@ -541,7 +541,7 @@ class Ui_all_in_one(object):
         QtCore.QMetaObject.connectSlotsByName(all_in_one)
 
         self.addButton.clicked.connect(self.addingPic)
-        self.evidenceButton.clicked.connect(self.clueSearching)
+        self.simpleSearch.clicked.connect(self.searchInAll)
 
     def retranslateUi(self, all_in_one):
         _translate = QtCore.QCoreApplication.translate
@@ -642,8 +642,9 @@ class Ui_all_in_one(object):
             pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
             self.l1.addNextData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
         print(self.l1.__repr__())
+        print(self.l1.get_size() + 1)
 
-    def clueSearching(self):
+    def searchInAll(self):
         self.y2 = self.searchYear.text()
         self.mo2= self.searchMonth.currentText()
         self.d2= self.searchDay.text()
