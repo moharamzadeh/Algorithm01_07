@@ -40,7 +40,7 @@ color: rgb(255, 243, 228);</string>
     <enum>QFrame::NoFrame</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <property name="geometry">
@@ -557,133 +557,6 @@ color: rgb(231, 158, 79);</string>
      <property name="text">
       <string/>
      </property>
-    </widget>
-    <widget class="QLabel" name="timeLabel_5">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>690</y>
-       <width>231</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 243, 228);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="checkLabel_5">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>690</y>
-       <width>221</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 243, 228);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="picturePlace_5">
-     <property name="geometry">
-      <rect>
-       <x>202</x>
-       <y>250</y>
-       <width>480</width>
-       <height>430</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="timeLabel_6">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>690</y>
-       <width>231</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 243, 228);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="picturePlace_6">
-     <property name="geometry">
-      <rect>
-       <x>202</x>
-       <y>250</y>
-       <width>480</width>
-       <height>430</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="checkLabel_6">
-     <property name="geometry">
-      <rect>
-       <x>460</x>
-       <y>690</y>
-       <width>221</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 243, 228);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -1158,6 +1031,14 @@ color: rgb(231, 158, 79);</string>
     </widget>
    </widget>
    <widget class="QWidget" name="page_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>880</width>
+      <height>747</height>
+     </rect>
+    </property>
     <attribute name="icon">
      <iconset>
       <normaloff>../Icons/103476_cancel_image_icon.png</normaloff>../Icons/103476_cancel_image_icon.png</iconset>
