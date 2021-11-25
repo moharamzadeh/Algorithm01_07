@@ -100,8 +100,10 @@ class LinkedListPictures:
 		preNode.setNext(None)
 		
 	def deleteFirstNode(self, node):
-		self.pointer = node.getNext()
-
+		nextNode = node.getNext()
+		self.pointer = nextNode
+		nextNode.setPrevious(None)
+	
 	def deleteData(self, timeDate):
 		pass
 
