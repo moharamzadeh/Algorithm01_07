@@ -6,26 +6,61 @@ class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
 
-	def addNextData(self, address, year, month, day, hour, minute, tag=False): 
-		pointer = self.pointer
-		node = Node(address, year, month, day, hour, minute, tag=False)
-		if pointer == None:
+	def addNode(self, node):	#If == Error	
+		if self.pointer == None:
 			self.pointer = node
 			return
-		while pointer.getNext() != None:
-			pointer = pointer.getNext()
-		pointer.setNext(node)
-		node.setPrevious(pointer)
 
-	def addNextNode(self, node):
+		temp = self.searchNode(node)
+
+		if temp == None:
+			self.addFirstNode(node)
+			return
+
+		if temp.getNext() == None:	#If == Error
+			self.addLastNode(node)
+			return
+
+		nextNode = temp.getNext()
+		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
+		return
+
+	def addData(self, address, year, month, day, hour, minute, tag=False):
+		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
+		self.addNode(node)
+		
+	def addLastNode(self, node):
+		temp = self.pointer
+		if temp == None:
+			self.pointer = node
+			return
+		while temp.getNext() != None:
+			temp = temp.getNext()
+		temp.setNext(node)
+		node.setPrevious(temp)
+		# temp <-> node <-> None
+		return
+
+	def addFirstNode(self, node):
 		pointer = self.pointer
 		if pointer == None:
 			self.pointer = node
 			return
-		while pointer.getNext() != None:
-			pointer = pointer.getNext()
-		pointer.setNext(node)
-		node.setPrevious(pointer)
+		node.setNext(pointer)
+		pointer.setPrevious(node)
+		# node <-> self.pointer
+		self.pointer = node
+		# self.pointer -> node
+		return
+
+	def addBetweenNode(self, inputNode, node1, node2):
+		inputNode.setNext(node2)
+		node2.setPrevious(inputNode)
+		# inputNode <-> node2
+		node1.setNext(inputNode)
+		inputNode.setPrevious(node1)
+		# node1 <-> inputNode
+		return
 
 	def getLength(self):
 		return self.length
