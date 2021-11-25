@@ -104,9 +104,6 @@ class LinkedListPictures:
 		self.pointer = nextNode
 		nextNode.setPrevious(None)
 
-	def deleteData(self, timeDate):
-		pass
-
 	def __str__(self):
 		pass
 
