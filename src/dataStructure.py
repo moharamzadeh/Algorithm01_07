@@ -2,74 +2,96 @@ import datetime
 from node import *
 
 class LinkedListPictures:
-    length = 0
-    def __init__(self, node=None):
-        self.pointer = node
-        self.size = 0
+	length = 0
+	def __init__(self, node=None):
+		self.pointer = node
 
-    def addNextData(self, address, year, month, day, hour, minute, tag=False): 
-        pointer = self.pointer
-        node = Node(address, year, month, day, hour, minute, tag=False)
-        if pointer == None:
-            self.pointer = node
-            return
-        while pointer.getNext() != None:
-            pointer = pointer.getNext()
-        pointer.setNext(node)
-        node.setPrevious(pointer)
-        self.size += 1
+	def addNode(self, node):	#If == Error	
+		if self.pointer == None:
+			self.pointer = node
+			return
 
-    def get_size(self):
-        return self.size
+		temp = self.searchNode(node)
 
-    def addNextNode(self, node):
-        pointer = self.pointer
-        if pointer == None:
-            self.pointer = node
-            return
-        while pointer.getNext() != None:
-            pointer = pointer.getNext()
-        pointer.setNext(node)
-        node.setPrevious(pointer)
-        self.size += 1
+		if temp == None:
+			self.addFirstNode(node)
+			return
 
-    def getLength(self):
-        return self.length
+		if temp.getNext() == None:	#If == Error
+			self.addLastNode(node)
+			return
 
-    def searchNode(self, node: Node):
-        this_node = self.pointer
-        while this_node is not None:
-            if this_node.getData() == node:
-                if this_node.getData() == node:
-                    return node
-            elif this_node.getNext == self.pointer:
-                return False
-            else:
-                this_node = this_node.getNext()
-        return None
-        # temp = self.pointer
-        # while  temp.__cmp__(node) < 0 :
-        #     if temp.next == None:
-        #         return temp
-        # if temp.__cmp__(node) > 0: 
-        #     return temp.previous
-        # return temp
+		nextNode = temp.getNext()
+		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
+		return
 
-    def deleteNode(self, node):
-        pass
+	def addData(self, address, year, month, day, hour, minute, tag=False):
+		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
+		self.addNode(node)
+		
+	def addLastNode(self, node):
+		temp = self.pointer
+		if temp == None:
+			self.pointer = node
+			return
+		while temp.getNext() != None:
+			temp = temp.getNext()
+		temp.setNext(node)
+		node.setPrevious(temp)
+		# temp <-> node <-> None
+		return
 
-    def deleteData(self, timeDate: list):
-        pass
+	def addFirstNode(self, node):
+		pointer = self.pointer
+		if pointer == None:
+			self.pointer = node
+			return
+		node.setNext(pointer)
+		pointer.setPrevious(node)
+		# node <-> self.pointer
+		self.pointer = node
+		# self.pointer -> node
+		return
 
-    def __str__(self):
-        pass
+	def addBetweenNode(self, inputNode, node1, node2):
+		inputNode.setNext(node2)
+		node2.setPrevious(inputNode)
+		# inputNode <-> node2
+		node1.setNext(inputNode)
+		inputNode.setPrevious(node1)
+		# node1 <-> inputNode
+		return
 
-    def __repr__(self):
-        data = ['pointer']
-        node = self.pointer
-        while node != None:
-            data.append(str(node.__repr__()))
-            node = node.getNext()
-        data.append('None')
-        return ' <-> '.join(data)
+	def getLength(self):
+		return self.length
+
+	def searchNode(self, node):
+		temp = self.pointer
+		if temp == None:
+			return None
+		while temp.__cmp__(node) < 0 :
+			if temp.next == None :
+				return temp
+			temp = temp.next
+		if temp.__cmp__(node) > 0: 
+			return temp.previous
+		return temp
+
+	def deleteNode(self, node):
+		pass
+
+	def deleteData(self, timeDate):
+		pass
+
+	def __str__(self):
+		pass
+
+	def __repr__(self):
+		data = ['pointer']
+		node = self.pointer
+		while node != None:
+			data.append(str(node.__repr__()))
+			node = node.getNext()
+		data.append('None')
+		return ' <-> '.join(data)
 
