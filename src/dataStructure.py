@@ -79,7 +79,7 @@ class LinkedListPictures:
 
 	def deleteNode(self, node):
 		pointer = self.searchNode(node)
-		if  node.__cmp__(pointer) != 0 or pointer is None:
+		if pointer == None or node.__cmp__(pointer) != 0:
 			print("The picture is not found")
 			return
 		
