@@ -50,11 +50,21 @@ class Node:
 	def getDate(self):
 		return self.dateTime.date()
 
+	def getDateTime(self):
+		return self.dateTime
+
 	def getNext(self):
 		return self.next
 
 	def getPrevious(self):
 		return self.previous
+
+	def __cmp__(self, node):
+		if self.getDateTime() > node.getDateTime():
+			return 1
+		elif self.getDateTime() < node.getDateTime():
+			return -1
+		return 0
 
 	def __repr__(self):
 		return self.dateTime
