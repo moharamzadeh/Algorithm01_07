@@ -41,7 +41,7 @@ class LinkedListPictures:
 	def deleteNode(self, node):
 		pass
 
-	def deleteData(self, timeDate: list):
+	def deleteData(self, timeDate):
 		pass
 
 	def __str__(self):
