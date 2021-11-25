@@ -20,6 +20,8 @@ print(n2.getInformation())
 n3.printInformation()
 n4.printInformation(index=2)
 
+# print(n2.__cmp__(n1))
+
 # t1 = datetime.datetime(year=2000, month=12, day=30, hour=12, minute=11)
 # t2 = datetime.datetime(year=2000, month=12, day=30, hour=12, minute=10)
 
