@@ -85,13 +85,13 @@ class LinkedListPictures:
 		
 		if pointer.next is None:
 			self.deleteLastNode(pointer)
-		elif pointer.__cmp__(self.pointer) is 0:
-			self.deleteFirstNode(node)
-		else :	
+		elif pointer == self.pointer:
+			self.deleteFirstNode(pointer)
+		else:	
 			nextNode = pointer.getNext()
 			preNode = pointer.getPrevious()
 			preNode.setNext(nextNode)
-			nextNode.setPervious(preNode)
+			nextNode.setPrevious(preNode)
 		print("The picture successfully deleted")
 		return
 	
