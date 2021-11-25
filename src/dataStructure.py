@@ -7,33 +7,37 @@ class LinkedListPictures:
 		self.pointer = node
 
 	def addNode(self, node):	#If == Error
+		temp = self.searchNode(node)
+		
 		if self.pointer == None:
 			self.pointer = node
 			return
 
-		if self.pointer.getNext() == None:	#If == Error
-			if node.__cmp__(self.pointer) >= 0:
-				self.pointer.setNext(node)
-				node.setPrevious(self.pointer)
-				return
-			
-			temp = self.pointer
-			self.pointer = node
-			node.setNext(temp)
-			temp.setPrevious(node)
-			return
-
 		
-		previousNode = self.searchNode(node)
-		if previousNode == None:
-			temp = self.pointer
-			self.pointer = node
-			node.setNext(temp)
-			temp.setPrevious(node)
+		if temp.getNext() == None:	#If == Error
+			self.addLastNode(node)
 			return
+				
+		nextNode = temp.getNext()
 
-		self.addNextNode(node, previousNode)
+		temp.setNext(node)
+		node.setPrevious(temp)
 		
+		node.setNext(nextNode)
+		nextNode.setPrevious(node)
+		return
+		
+	def addLastNode(self, node):
+		if self.pointer == None:
+			self.pointer = node
+			return
+		
+		temp = self.pointer
+		while temp.getNext() != None:
+			temp = temp.getNext()
+		temp.setNext(node)
+		node.setPrevious(temp)
+		return
 
 	def addNextData(self, address, year, month, day, hour, minute, tag=False): 
 		pointer = self.pointer
@@ -62,10 +66,12 @@ class LinkedListPictures:
 	def getLength(self):
 		return self.length
 
-	def searchNode(self, node: Node):
+	def searchNode(self, node):
 		temp = self.pointer
-		while  temp.__cmp__(node) < 0:
-			if temp.next == None:
+		if temp == None:
+			return None
+		while temp.__cmp__(node) < 0 :
+			if temp.next == None :
 				return temp
 			temp = temp.next
 		if temp.__cmp__(node) > 0: 
