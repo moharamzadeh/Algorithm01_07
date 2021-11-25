@@ -44,30 +44,28 @@ class LinkedListPictures:
 
 	def deleteNode(self, node):
 		pointer = self.searchNode(node)
-		if node.__cmp__(pointer) is 0 :
-			if pointer.next is None:
-				self.deleteLastNode(pointer)
-			elif node.__cmp__(self.pointer) is 0:
-				self.deleteFirstNode(node)
-			else :	
-				pointer = pointer.next
-				pointer.pervious=pointer.next
-			print("The picture successfully deleted")
+		if  node.__cmp__(pointer) != 0 or pointer is None:
+			print("The picture is not found")
 			return
-		print("The picture is not found")
-
+		
+		if pointer.next is None:
+			self.deleteLastNode(pointer)
+		elif pointer.__cmp__(self.pointer) is 0:
+			self.deleteFirstNode(node)
+		else :	
+			nextNode = pointer.getNext()
+			preNode = pointer.getPrevious()
+			preNode.setNext(nextNode)
+			nextNode.setPervious(preNode)
+		print("The picture successfully deleted")
+		return
+	
 	def deleteLastNode(self, node):
 		preNode = node.getPrevious()
 		preNode.setNext(None)
-		# temp = self.searchNode(node)
-		# pointer = temp.pervious
-		# pointer.addNextNode(None)
 		
 	def deleteFirstNode(self, node):
-		# temp = self.pointer
-		# self.pointer = temp.next
-		# del temp
-		pass
+		self.pointer = node.getNext()
 
 	def deleteData(self, timeDate):
 		pass
