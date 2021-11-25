@@ -6,62 +6,61 @@ class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
 
-	def addNode(self, node):	#If == Error
-		temp = self.searchNode(node)
-		
+	def addNode(self, node):	#If == Error	
 		if self.pointer == None:
 			self.pointer = node
 			return
 
-		
+		temp = self.searchNode(node)
+
+		if temp == None:
+			self.addFirstNode(node)
+			return
+
 		if temp.getNext() == None:	#If == Error
 			self.addLastNode(node)
 			return
-				
-		nextNode = temp.getNext()
 
-		temp.setNext(node)
-		node.setPrevious(temp)
-		
-		node.setNext(nextNode)
-		nextNode.setPrevious(node)
+		nextNode = temp.getNext()
+		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
 		return
+
+	def addData(self, address, year, month, day, hour, minute, tag=False):
+		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
+		self.addNode(node)
 		
 	def addLastNode(self, node):
-		if self.pointer == None:
+		temp = self.pointer
+		if temp == None:
 			self.pointer = node
 			return
-		
-		temp = self.pointer
 		while temp.getNext() != None:
 			temp = temp.getNext()
 		temp.setNext(node)
 		node.setPrevious(temp)
+		# temp <-> node <-> None
 		return
 
-	def addNextData(self, address, year, month, day, hour, minute, tag=False): 
+	def addFirstNode(self, node):
 		pointer = self.pointer
-		node = Node(address, year, month, day, hour, minute, tag=False)
 		if pointer == None:
 			self.pointer = node
 			return
-		while pointer.getNext() != None:
-			pointer = pointer.getNext()
-		pointer.setNext(node)
-		node.setPrevious(pointer)
+		node.setNext(pointer)
+		pointer.setPrevious(node)
+		# node <-> self.pointer
+		self.pointer = node
+		# self.pointer -> node
+		return
 
-	def addNextNode(self, nodeInput: Node, nodeAddress: Node):
-		pointer = nodeAddress.getNext()
-		if pointer == None:
-			nodeAddress.setNext(nodeInput)
-			nodeInput.setPrevious(nodeAddress)
-			return
-		
-		nodeAddress.setNext(nodeInput)
-		nodeInput.setPrevious(nodeAddress)
-		
-		nodeInput.setNext(pointer)
-		pointer.setPrevious(nodeInput)
+	def addBetweenNode(self, inputNode, node1, node2):
+		inputNode.setNext(node2)
+		node2.setPrevious(inputNode)
+		# inputNode <-> node2
+		node1.setNext(inputNode)
+		inputNode.setPrevious(node1)
+		# node1 <-> inputNode
+		return
 
 	def getLength(self):
 		return self.length
