@@ -15,8 +15,14 @@ l1.addNextNode(n3)
 l1.addNextNode(n4)
 l1.addNextNode(n5)
 
-pic = Node(address='', year=2020, month='August', day=8, hour=1, minute=1)
-
 print(l1.__repr__())
+print(n2.getInformation())
+n3.printInformation()
+n4.printInformation(index=2)
 
-print(l1.searchNode(pic).getTime())
+# print(n2.__cmp__(n1))
+
+# t1 = datetime.datetime(year=2000, month=12, day=30, hour=12, minute=11)
+# t2 = datetime.datetime(year=2000, month=12, day=30, hour=12, minute=10)
+
+# print(t1 > t2)
