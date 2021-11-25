@@ -67,7 +67,7 @@ class LinkedListPictures:
 
 	def searchNode(self, node):
 		temp = self.pointer
-		if temp == None:
+		if node == None or temp == None:
 			return None
 		while temp.__cmp__(node) < 0 :
 			if temp.next == None :
