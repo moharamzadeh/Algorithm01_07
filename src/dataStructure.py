@@ -59,8 +59,21 @@ class LinkedListPictures:
 			return temp.getPrevious()
 		return temp
 
-	def search(self, timeDate, tag):
-		pass
+	def searchNextNodeByTag(self, node, tag=None):
+		temp = self.searchNode(node)
+		if temp == None or temp.getNext() == None:
+			print('Not Found: Last Node')
+			return None
+
+		if tag == None or tag == False:
+			return temp.getNext()
+
+		while temp.getTag() != True:
+			temp = temp.getNext()
+			if temp == None:
+				print('Not Found: Not exist')
+				return None
+		return temp
 
 	def deleteNode(self, node):
 		pointer = self.searchNode(node)
