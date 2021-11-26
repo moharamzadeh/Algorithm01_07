@@ -40,8 +40,8 @@ class Node:
 
 	def printInformation(self, index=None):
 		if index == None:
-			print('add: ' + ' ' + self.getInformation
-			()[0] + '  date&time: ' + str(self.getInformation()[1]) + '  tag: ' + str(self.getInformation()[2]))
+			print(self.getInformation
+			()[0] + '  ' + str(self.getInformation()[1]) + '  ' + str(self.getInformation()[2]))
 			return self.getInformation()
 		info = self.getInformation()[index]
 		print(info)
