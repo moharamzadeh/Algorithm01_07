@@ -92,17 +92,20 @@ class LinkedListPictures:
 	def deleteLastNode(self, node):
 		preNode = node.getPrevious()
 		preNode.setNext(None)
+		self.size -= 1
 		
 	def deleteFirstNode(self, node):
 		nextNode = node.getNext()
 		self.pointer = nextNode
 		nextNode.setPrevious(None)
+		self.size -= 1
 
 	def deleteBetweenNode(self, node):
 		nextNode = node.getNext()
 		preNode = node.getPrevious()
 		preNode.setNext(nextNode)
 		nextNode.setPrevious(preNode)
+		self.size -= 1
 		# preNode <-> nextNode
 
 	def __str__(self):
