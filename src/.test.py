@@ -1,6 +1,6 @@
 import datetime
-from node import *
-from dataStructure import *
+from Node import *
+from LinkedListPictures import *
 
 
 # TODO: if == & sakht Node timeDate & deleteData & print porbar & cmp & changeInfo (parameter na mahdod) & delete ==None and write is None

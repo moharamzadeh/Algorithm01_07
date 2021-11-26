@@ -1,4 +1,5 @@
 /src/__pycache__/
 /src/*.pyc
 UI/scr-UI/__pycache__/
-
+/.qt_for_python/
+/__pycache__/
