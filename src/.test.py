@@ -3,9 +3,7 @@ from node import *
 from dataStructure import *
 
 
-# TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp & length & changeInfo (parameter na mahdod) & delete ==None and write is None
-
-# NOTE: moghe delete az method search estefadeh mikoni? chon ghabli momkene bashe na khodesh
+# TODO: if == & sakht Node timeDate & deleteData & print porbar & cmp & changeInfo (parameter na mahdod) & delete ==None and write is None
 
 n1 = Node(address='', year=2020, month=4, day=28, hour=1, minute=15, tag=False)
 # n2 = Node(address='', year=2030, month=10, day=2, hour=1, minute=15, tag=False)

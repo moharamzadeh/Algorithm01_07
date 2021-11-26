@@ -2,7 +2,6 @@ import datetime
 from node import *
 
 class LinkedListPictures:
-	length = 0
 	def __init__(self, node=None):
 		self.pointer = node
 
@@ -44,9 +43,6 @@ class LinkedListPictures:
 		inputNode.setPrevious(nodeInList)
 		# nodeInList <-> inputNode
 
-	def getLength(self):
-		return self.length
-
 	def searchNode(self, node):
 		temp = self.pointer
 		if node == None or temp == None:
@@ -83,7 +79,6 @@ class LinkedListPictures:
 	def deleteNode(self, node):
 		pointer = self.searchNode(node)
 		if pointer == None or node.__cmp__(pointer) != 0:
-			print("The picture is not found")
 			return
 		
 		# length(list) == 1
