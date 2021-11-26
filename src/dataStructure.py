@@ -24,12 +24,12 @@ class LinkedListPictures:
 		self.addNode(node)
 
 	def addFirstNode(self, node):
-		pointer = self.pointer
-		if pointer == None:
+		temp = self.pointer
+		if temp == None:
 			self.pointer = node
 			return
-		node.setNext(pointer)
-		pointer.setPrevious(node)
+		node.setNext(temp)
+		temp.setPrevious(node)
 		# node <-> self.pointer
 		self.pointer = node
 		# self.pointer -> node
