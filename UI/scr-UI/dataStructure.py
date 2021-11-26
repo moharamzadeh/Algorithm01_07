@@ -11,47 +11,38 @@ class LinkedListPictures:
 		if temp == None:
 			self.addFirstNode(node)
 			return
-
-		if temp.getNext() == None:	#If == Error
-			self.addLastNode(node)
-			return
-
-		nextNode = temp.getNext()
-		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
+		self.addNextNode(inputNode=node, nodeInList=temp)
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
-		
-	def addLastNode(self, node):
+
+	def addFirstNode(self, node):
 		temp = self.pointer
 		if temp == None:
 			self.pointer = node
 			return
-		while temp.getNext() != None:
-			temp = temp.getNext()
-		temp.setNext(node)
-		node.setPrevious(temp)
-		# temp <-> node <-> None
-
-	def addFirstNode(self, node):
-		pointer = self.pointer
-		if pointer == None:
-			self.pointer = node
-			return
-		node.setNext(pointer)
-		pointer.setPrevious(node)
+		node.setNext(temp)
+		temp.setPrevious(node)
 		# node <-> self.pointer
 		self.pointer = node
 		# self.pointer -> node
 
-	def addBetweenNode(self, inputNode, node1, node2):
-		inputNode.setNext(node2)
-		node2.setPrevious(inputNode)
-		# inputNode <-> node2
-		node1.setNext(inputNode)
-		inputNode.setPrevious(node1)
-		# node1 <-> inputNode
+	def addNextNode(self, inputNode, nodeInList):
+		if nodeInList.getNext() == None:
+			nodeInList.setNext(inputNode)
+			inputNode.setPrevious(nodeInList)
+			# nodeInList <-> inputNode
+			return
+
+		nextNode = nodeInList.getNext()
+
+		inputNode.setNext(nextNode)
+		nextNode.setPrevious(inputNode)
+		# inputNode <-> nextNode
+		nodeInList.setNext(inputNode)
+		inputNode.setPrevious(nodeInList)
+		# nodeInList <-> inputNode
 
 	def getLength(self):
 		return self.length
@@ -68,8 +59,21 @@ class LinkedListPictures:
 			return temp.getPrevious()
 		return temp
 
-	def search(self, timeDate, tag):
-		pass
+	def searchNextNodeByTag(self, node, tag=None):
+		temp = self.searchNode(node)
+		if temp == None or temp.getNext() == None:
+			print('Not Found: Last Node')
+			return None
+
+		if tag == None or tag == False:
+			return temp.getNext()
+
+		while temp.getTag() != True:
+			temp = temp.getNext()
+			if temp == None:
+				print('Not Found: Not exist')
+				return None
+		return temp
 
 	def deleteNode(self, node):
 		pointer = self.searchNode(node)
@@ -77,10 +81,16 @@ class LinkedListPictures:
 			print("The picture is not found")
 			return
 		
-		if pointer.next == None:
-			self.deleteLastNode(pointer)
+		# length(list) == 1
+		if pointer == self.pointer and pointer.getNext() == None:
+			self.pointer = None
+		# First Node
 		elif pointer == self.pointer:
 			self.deleteFirstNode(pointer)
+		# Last Node
+		elif pointer.next == None:
+			self.deleteLastNode(pointer)
+		# Between Node
 		else:	
 			self.deleteBetweenNode(pointer)
 		print("The picture successfully deleted")
