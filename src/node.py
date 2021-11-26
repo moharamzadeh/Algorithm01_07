@@ -76,5 +76,5 @@ class Node:
 		return 0
 
 	def __repr__(self):
-		return self.dateTime
-
+		node = [str(self.dateTime), str(self.tag)]
+		return ' '.join(node)
