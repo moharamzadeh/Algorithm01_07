@@ -82,10 +82,7 @@ class LinkedListPictures:
 		elif pointer == self.pointer:
 			self.deleteFirstNode(pointer)
 		else:	
-			nextNode = pointer.getNext()
-			preNode = pointer.getPrevious()
-			preNode.setNext(nextNode)
-			nextNode.setPrevious(preNode)
+			self.deleteBetweenNode(pointer)
 		print("The picture successfully deleted")
 	
 	def deleteLastNode(self, node):
@@ -96,6 +93,13 @@ class LinkedListPictures:
 		nextNode = node.getNext()
 		self.pointer = nextNode
 		nextNode.setPrevious(None)
+
+	def deleteBetweenNode(self, node):
+		nextNode = node.getNext()
+		preNode = node.getPrevious()
+		preNode.setNext(nextNode)
+		nextNode.setPrevious(preNode)
+		# preNode <-> nextNode
 
 	def __str__(self):
 		pass
