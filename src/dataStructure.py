@@ -18,7 +18,6 @@ class LinkedListPictures:
 
 		nextNode = temp.getNext()
 		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
-		return
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
@@ -34,7 +33,6 @@ class LinkedListPictures:
 		temp.setNext(node)
 		node.setPrevious(temp)
 		# temp <-> node <-> None
-		return
 
 	def addFirstNode(self, node):
 		pointer = self.pointer
@@ -46,7 +44,6 @@ class LinkedListPictures:
 		# node <-> self.pointer
 		self.pointer = node
 		# self.pointer -> node
-		return
 
 	def addBetweenNode(self, inputNode, node1, node2):
 		inputNode.setNext(node2)
@@ -55,7 +52,6 @@ class LinkedListPictures:
 		node1.setNext(inputNode)
 		inputNode.setPrevious(node1)
 		# node1 <-> inputNode
-		return
 
 	def getLength(self):
 		return self.length
@@ -91,7 +87,6 @@ class LinkedListPictures:
 			preNode.setNext(nextNode)
 			nextNode.setPrevious(preNode)
 		print("The picture successfully deleted")
-		return
 	
 	def deleteLastNode(self, node):
 		preNode = node.getPrevious()
