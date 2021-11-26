@@ -536,6 +536,7 @@ class Ui_all_in_one(object):
 		self.addButton.clicked.connect(self.addingPic)
 		self.simpleSearch.clicked.connect(self.searchInAll)
 		self.delFind.clicked.connect(self.delete)
+		self.evidenceButton.clicked.connect(self.evidenceTag)
 
 	def retranslateUi(self, all_in_one):
 		_translate = QtCore.QCoreApplication.translate
@@ -698,6 +699,27 @@ class Ui_all_in_one(object):
 			self.l1.deleteNode(newDel)
 		print(self.l1.__repr__())
 		print(self.l1.getLength()+1)
+
+	def evidenceTag(self):
+		self.y2 = self.searchYear.text()
+		self.mo2= self.searchMonth.currentText()
+		self.d2= self.searchDay.text()
+		self.h2= self.searchHour.text()
+		self.mn2= self.searchMin.text()
+		tagSearcher = Node("", int(self.y2), self.mo2, int(self.d2), int(self.h2), int(self.mn2), self.ev)
+		try:
+			infoTuple = self.l1.searchNextNodeByTag(tagSearcher).getInformation()
+			pixmap = QtGui.QPixmap(infoTuple[0])
+			pixmapSize = pixmap.scaled(480, 430)
+			self.searchPicturePlace.setPixmap(pixmap)
+			self.searchCheckLabel.setText(str(infoTuple[-1]))
+			self.searchTimeLabel.setText(str(infoTuple[1]))
+		except AttributeError:
+			msg = QMessageBox()
+			msg.setWindowTitle("Wrong Information")
+			msg.setText("There is no information for this date!\nPlease enter another timing.")
+			msg.setIcon(QMessageBox.Information)
+			x = msg.exec_()
 		
 		
 

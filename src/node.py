@@ -1,7 +1,7 @@
 import datetime
 
 class Node:
-	def __init__(self, year, month, day, hour, minute, address='', tag=False):
+	def __init__(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
 		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		self.tag = tag
@@ -40,8 +40,8 @@ class Node:
 
 	def printInformation(self, index=None):
 		if index == None:
-			print('add: ' + ' ' + self.getInformation
-			()[0] + '  date&time: ' + str(self.getInformation()[1]) + '  tag: ' + str(self.getInformation()[2]))
+			print(self.getInformation
+			()[0] + '  ' + str(self.getInformation()[1]) + '  ' + str(self.getInformation()[2]))
 			return self.getInformation()
 		info = self.getInformation()[index]
 		print(info)
@@ -65,6 +65,9 @@ class Node:
 	def getPrevious(self):
 		return self.previous
 
+	def getTag(self):
+		return self.tag
+
 	def __cmp__(self, node):
 		if self.getDateTime() > node.getDateTime():
 			return 1
@@ -73,5 +76,5 @@ class Node:
 		return 0
 
 	def __repr__(self):
-		return self.dateTime
-
+		node = [str(self.dateTime), str(self.tag)]
+		return ' '.join(node)
