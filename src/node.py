@@ -1,7 +1,7 @@
 import datetime
 
 class Node:
-	def __init__(self, address, year, month, day, hour, minute, tag=False):
+	def __init__(self, year, month, day, hour, minute, address='', tag=False):
 		self.address = address
 		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		self.tag = tag
@@ -12,6 +12,9 @@ class Node:
 		self.address = address
 		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		self.tag = tag
+
+	def createNodeTimeDate(self, timeDate):
+		pass
 
 	def changeDateToInt(self, month):
 		if isinstance(month, int):
@@ -43,6 +46,9 @@ class Node:
 		info = self.getInformation()[index]
 		print(info)
 		return info
+
+	def getAddress(self):
+		return self.address
 
 	def getTime(self):
 		return self.dateTime.time()
