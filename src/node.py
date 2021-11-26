@@ -47,6 +47,9 @@ class Node:
 		print(info)
 		return info
 
+	def getAddress(self):
+		return self.address
+
 	def getTime(self):
 		return self.dateTime.time()
 
