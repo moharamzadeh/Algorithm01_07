@@ -61,12 +61,17 @@ class LinkedListPictures:
 
 	def searchNextNodeByTag(self, node, tag=None):
 		temp = self.searchNode(node)
-		if temp == None or temp.getNext() == None:
+		if temp == None:
+			return self.pointer
+		if temp.getNext() == None:
 			print('Not Found: Last Node')
 			return None
 
 		if tag == None or tag == False:
 			return temp.getNext()
+
+
+		temp = temp.getNext()
 
 		while temp.getTag() != True:
 			temp = temp.getNext()
