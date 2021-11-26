@@ -638,7 +638,6 @@ class Ui_all_in_one(object):
 			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 			self.l1.addData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 		print(self.l1.__repr__())
-		print(self.l1.getLength()+1)
 
 	def searchInAll(self):
 		self.y2 = self.searchYear.text()
@@ -648,12 +647,14 @@ class Ui_all_in_one(object):
 		self.mn2= self.searchMin.text()
 		searcher = Node("", int(self.y2), self.mo2, int(self.d2), int(self.h2), int(self.mn2), self.ev)
 		try:
-			infoTuple = self.l1.searchNode(searcher).getInformation()
+			infoTuple = self.l1.searchNextNodeByTag(searcher).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
 			pixmapSize = pixmap.scaled(480, 430)
 			self.searchPicturePlace.setPixmap(pixmap)
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
+			print(self.l1.__repr__())
+			print(infoTuple)
 		except AttributeError:
 			msg = QMessageBox()
 			msg.setWindowTitle("Wrong Information")
@@ -686,19 +687,14 @@ class Ui_all_in_one(object):
 
 	def finalDel(self):
 		newDel = Node(self.infoTuple[0],self.infoTuple[1].year, self.infoTuple[1].month, self.infoTuple[1].day, self.infoTuple[1].hour,self.infoTuple[1].minute, self.infoTuple[2])
-		if self.l1.getLength()+1 == 1:
-			try:
-				self.l1.deleteFirstNode(newDel)
-			except AttributeError:
-				msg = QMessageBox()
-				msg.setWindowTitle("Wrong Information")
-				msg.setText("Your list is empty right now")
-				msg.setIcon(QMessageBox.Information)
-				x = msg.exec_()
-		if self.l1.getLength()+1 > 1:
-			self.l1.deleteNode(newDel)
+		self.l1.deleteNode(newDel)
 		print(self.l1.__repr__())
-		print(self.l1.getLength()+1)
+		msg = QMessageBox()
+		msg.setWindowTitle("Deleted")
+		msg.setText("The picture is successfully deleted.")
+		msg.setIcon(QMessageBox.Information)
+		x = msg.exec_()
+	
 
 	def evidenceTag(self):
 		self.y2 = self.searchYear.text()
@@ -708,12 +704,15 @@ class Ui_all_in_one(object):
 		self.mn2= self.searchMin.text()
 		tagSearcher = Node("", int(self.y2), self.mo2, int(self.d2), int(self.h2), int(self.mn2), self.ev)
 		try:
-			infoTuple = self.l1.searchNextNodeByTag(tagSearcher).getInformation()
+			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tag= True).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
 			pixmapSize = pixmap.scaled(480, 430)
 			self.searchPicturePlace.setPixmap(pixmap)
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
+			print(infoTuple)
+			print(self.l1.__repr__())
+			
 		except AttributeError:
 			msg = QMessageBox()
 			msg.setWindowTitle("Wrong Information")

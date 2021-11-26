@@ -81,10 +81,16 @@ class LinkedListPictures:
 			print("The picture is not found")
 			return
 		
-		if pointer.next == None:
-			self.deleteLastNode(pointer)
+		# length(list) == 1
+		if pointer == self.pointer and pointer.getNext() == None:
+			self.pointer = None
+		# First Node
 		elif pointer == self.pointer:
 			self.deleteFirstNode(pointer)
+		# Last Node
+		elif pointer.next == None:
+			self.deleteLastNode(pointer)
+		# Between Node
 		else:	
 			self.deleteBetweenNode(pointer)
 		print("The picture successfully deleted")
