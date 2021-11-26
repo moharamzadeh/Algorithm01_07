@@ -2,9 +2,9 @@ import datetime
 from node import *
 
 class LinkedListPictures:
+	length = 0
 	def __init__(self, node=None):
 		self.pointer = node
-		self.size = 0
 
 	def addNode(self, node):	#If == Error	
 		temp = self.searchNode(node)
@@ -18,7 +18,6 @@ class LinkedListPictures:
 
 		nextNode = temp.getNext()
 		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
-		
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
@@ -33,7 +32,6 @@ class LinkedListPictures:
 			temp = temp.getNext()
 		temp.setNext(node)
 		node.setPrevious(temp)
-		self.size +=1
 		# temp <-> node <-> None
 
 	def addFirstNode(self, node):
@@ -45,7 +43,6 @@ class LinkedListPictures:
 		pointer.setPrevious(node)
 		# node <-> self.pointer
 		self.pointer = node
-		self.size +=1
 		# self.pointer -> node
 
 	def addBetweenNode(self, inputNode, node1, node2):
@@ -54,11 +51,10 @@ class LinkedListPictures:
 		# inputNode <-> node2
 		node1.setNext(inputNode)
 		inputNode.setPrevious(node1)
-		self.size +=1
 		# node1 <-> inputNode
 
 	def getLength(self):
-		return self.size
+		return self.length
 
 	def searchNode(self, node):
 		temp = self.pointer
@@ -92,20 +88,17 @@ class LinkedListPictures:
 	def deleteLastNode(self, node):
 		preNode = node.getPrevious()
 		preNode.setNext(None)
-		self.size -= 1
 		
 	def deleteFirstNode(self, node):
 		nextNode = node.getNext()
 		self.pointer = nextNode
 		nextNode.setPrevious(None)
-		self.size -= 1
 
 	def deleteBetweenNode(self, node):
 		nextNode = node.getNext()
 		preNode = node.getPrevious()
 		preNode.setNext(nextNode)
 		nextNode.setPrevious(preNode)
-		self.size -= 1
 		# preNode <-> nextNode
 
 	def __str__(self):
