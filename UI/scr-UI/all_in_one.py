@@ -648,6 +648,7 @@ class Ui_all_in_one(object):
 			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 			self.l1.addData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 		print(self.l1.__repr__())
+		print(self.l1.getLength()+1)
 
 	def searchInAll(self):
 		self.y2 = self.searchYear.text()
@@ -695,7 +696,17 @@ class Ui_all_in_one(object):
 
 	def finalDel(self):
 		newDel = Node(self.infoTuple[0],self.infoTuple[1].year, self.infoTuple[1].month, self.infoTuple[1].day, self.infoTuple[1].hour,self.infoTuple[1].minute, self.infoTuple[2])
-		self.l1.deleteNode(newDel)
+		if self.l1.getLength()+1 == 1:
+			try:
+				self.l1.deleteFirstNode(newDel)
+			except AttributeError:
+				msg = QMessageBox()
+				msg.setWindowTitle("Wrong Information")
+				msg.setText("Your list is empty right now")
+				msg.setIcon(QMessageBox.Information)
+				x = msg.exec_()
+		if self.l1.getLength()+1 > 1:
+			self.l1.deleteNode(newDel)
 		print(self.l1.__repr__())
 		
 		
