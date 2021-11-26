@@ -65,6 +65,9 @@ class Node:
 	def getPrevious(self):
 		return self.previous
 
+	def getTag(self):
+		return self.tag
+
 	def __cmp__(self, node):
 		if self.getDateTime() > node.getDateTime():
 			return 1
