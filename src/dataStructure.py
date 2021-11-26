@@ -7,12 +7,7 @@ class LinkedListPictures:
 		self.pointer = node
 
 	def addNode(self, node):	#If == Error	
-		if self.pointer == None:
-			self.pointer = node
-			return
-
 		temp = self.searchNode(node)
-
 		if temp == None:
 			self.addFirstNode(node)
 			return
