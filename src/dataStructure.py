@@ -1,6 +1,6 @@
 import datetime
 from node import *
-# TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp
+
 class LinkedListPictures:
 	length = 0
 	def __init__(self, node=None):
