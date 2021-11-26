@@ -2,7 +2,7 @@ import datetime
 from node import *
 from dataStructure import *
 
-# TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp & length & changeInfo (parameter na mahdod)
+# TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp & length & changeInfo (parameter na mahdod) & delete ==None and write is None
 
 n1 = Node(address='', year=1, month=4, day=28, hour=1, minute=15)
 n2 = Node(address='', year=2030, month=10, day=2, hour=1, minute=15)
