@@ -2,6 +2,7 @@ import datetime
 from node import *
 from dataStructure import *
 
+
 # TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp & length & changeInfo (parameter na mahdod) & delete ==None and write is None
 
 # NOTE: moghe delete az method search estefadeh mikoni? chon ghabli momkene bashe na khodesh
@@ -14,10 +15,12 @@ n1 = Node(address='', year=2020, month=4, day=28, hour=1, minute=15, tag=False)
 # n6 = Node(address='', year=2015, month=10, day=2, hour=0, minute=0, tag=False)
 # n7 = Node(address='', year=2045, month=10, day=2, hour=0, minute=1, tag=False)
 
+
 l1 = LinkedListPictures()
 
 l1.addNode(n1)
 # print(l1.pointer.getNext())
+
 # l1.addNode(n2)
 # l1.addNode(n3)
 # l1.addNode(n4)
@@ -28,4 +31,5 @@ print(l1.__repr__())
 
 pic = Node(address='', year=2020, month=4, day=28, hour=1, minute=15, tag=False)
 l1.deleteNode(n1)
+
 print(l1.__repr__())
