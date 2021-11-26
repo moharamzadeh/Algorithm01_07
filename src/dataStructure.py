@@ -17,22 +17,11 @@ class LinkedListPictures:
 			return
 
 		nextNode = temp.getNext()
-		self.addBetweenNode(inputNode=node, node1=temp, node2=nextNode)
+		self.addNextNode(inputNode=node, node1=temp, node2=nextNode)
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
-		
-	def addLastNode(self, node):
-		temp = self.pointer
-		if temp == None:
-			self.pointer = node
-			return
-		while temp.getNext() != None:
-			temp = temp.getNext()
-		temp.setNext(node)
-		node.setPrevious(temp)
-		# temp <-> node <-> None
 
 	def addFirstNode(self, node):
 		pointer = self.pointer
@@ -45,7 +34,18 @@ class LinkedListPictures:
 		self.pointer = node
 		# self.pointer -> node
 
-	def addBetweenNode(self, inputNode, node1, node2):
+	def addLastNode(self, node):
+		temp = self.pointer
+		if temp == None:
+			self.pointer = node
+			return
+		while temp.getNext() != None:
+			temp = temp.getNext()
+		temp.setNext(node)
+		node.setPrevious(temp)
+		# temp <-> node <-> None
+
+	def addNextNode(self, inputNode, node1, node2):
 		inputNode.setNext(node2)
 		node2.setPrevious(inputNode)
 		# inputNode <-> node2
