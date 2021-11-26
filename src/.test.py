@@ -2,7 +2,7 @@ import datetime
 from node import *
 from dataStructure import *
 
-# TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp
+# TODO: if == & search & sakht Node timeDate & deleteData & print porbar & cmp & length
 
 n1 = Node(address='', year=2020, month=4, day=28, hour=1, minute=15)
 n2 = Node(address='', year=2030, month=10, day=2, hour=1, minute=15)
@@ -31,7 +31,4 @@ print(l1.__repr__())
 
 pic = Node(address='', year=2020, month=4, day=28, hour=1, minute=15)
 l1.deleteNode(pic)
-print(l1.__repr__())
-
-l1.deleteNode(None)
 print(l1.__repr__())

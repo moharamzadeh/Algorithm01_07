@@ -77,7 +77,7 @@ class LinkedListPictures:
 			print("The picture is not found")
 			return
 		
-		if pointer.next is None:
+		if pointer.next == None:
 			self.deleteLastNode(pointer)
 		elif pointer == self.pointer:
 			self.deleteFirstNode(pointer)
