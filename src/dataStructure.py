@@ -11,13 +11,7 @@ class LinkedListPictures:
 		if temp == None:
 			self.addFirstNode(node)
 			return
-
-		if temp.getNext() == None:	#If == Error
-			self.addLastNode(node)
-			return
-
-		nextNode = temp.getNext()
-		self.addNextNode(inputNode=node, node1=temp, node2=nextNode)
+		self.addNextNode(inputNode=node, nodeInList=temp)
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
@@ -34,24 +28,21 @@ class LinkedListPictures:
 		self.pointer = node
 		# self.pointer -> node
 
-	def addLastNode(self, node):
-		temp = self.pointer
-		if temp == None:
-			self.pointer = node
+	def addNextNode(self, inputNode, nodeInList):
+		if nodeInList.getNext() == None:
+			nodeInList.setNext(inputNode)
+			inputNode.setPrevious(nodeInList)
+			# nodeInList <-> inputNode
 			return
-		while temp.getNext() != None:
-			temp = temp.getNext()
-		temp.setNext(node)
-		node.setPrevious(temp)
-		# temp <-> node <-> None
 
-	def addNextNode(self, inputNode, node1, node2):
-		inputNode.setNext(node2)
-		node2.setPrevious(inputNode)
-		# inputNode <-> node2
-		node1.setNext(inputNode)
-		inputNode.setPrevious(node1)
-		# node1 <-> inputNode
+		nextNode = nodeInList.getNext()
+
+		inputNode.setNext(nextNode)
+		nextNode.setPrevious(inputNode)
+		# inputNode <-> nextNode
+		nodeInList.setNext(inputNode)
+		inputNode.setPrevious(nodeInList)
+		# nodeInList <-> inputNode
 
 	def getLength(self):
 		return self.length
