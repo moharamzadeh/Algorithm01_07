@@ -70,6 +70,7 @@ class LinkedListPictures:
 		if tag == None or tag == False:
 			return temp.getNext()
 
+
 		temp = temp.getNext()
 
 		while temp.getTag() != True:
