@@ -53,8 +53,6 @@ class LinkedListPictures:
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
-		print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__repr__())
-		print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 
 	def searchNode(self, node):
 		temp = self.pointer
@@ -114,12 +112,14 @@ class LinkedListPictures:
 
 		pointer = self.searchNode(node)
 		if pointer == None or node.__cmp__(pointer) != 0:
+			print(Fore.YELLOW + 'Not Found (for delete): ' + Fore.RESET + node.__repr__())
+			print(Fore.CYAN + 'List: ' + Fore.RESET + self.__repr__())
 			return
 		
 		# length(list) == 1
 		if pointer == self.pointer and pointer.getNext() == None:
 			self.pointer = None
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
+			print(Fore.CYAN + 'List: ' + Fore.RESET + self.__repr__())
 		# First Node
 		elif pointer == self.pointer:
 			deleteFirstNode(pointer)
