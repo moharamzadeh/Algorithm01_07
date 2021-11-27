@@ -54,16 +54,33 @@ class LinkedListPictures:
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
 
-	def searchNode(self, node):
-		temp = self.pointer
-		if node == None or temp == None:
+	def existNode(self, node):
+		temp = self.searchNode(node=node, equal=True)
+		if temp == None:
+			return False
+		return True
+
+	def searchNode(self, node, equal=False):
+		def search(node):
+			temp = self.pointer
+			if node == None or temp == None:
+				return None
+			while temp.__cmp__(node) < 0 :
+				if temp.next == None :
+					return temp
+				temp = temp.next
+			if temp.__cmp__(node) > 0: 
+				return temp.getPrevious()
+			return temp
+
+		temp = search(node)
+		if temp is None:
 			return None
-		while temp.__cmp__(node) < 0 :
-			if temp.next == None :
+		if equal is True:
+			if temp.__cmp__(node) == 0:
 				return temp
-			temp = temp.next
-		if temp.__cmp__(node) > 0: 
-			return temp.getPrevious()
+			return None
+
 		return temp
 
 	def searchNextNodeByTag(self, node, tag=None):
@@ -110,7 +127,7 @@ class LinkedListPictures:
 			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__repr__())
 			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 
-		pointer = self.searchNode(node)
+		pointer = self.searchNode(node, equal=True)
 		if pointer == None or node.__cmp__(pointer) != 0:
 			print(Fore.YELLOW + 'Not Found (for delete): ' + Fore.RESET + node.__repr__())
 			print(Fore.CYAN + 'List: ' + Fore.RESET + self.__repr__())
