@@ -7,46 +7,46 @@ class LinkedListPictures:
 		print(self.__repr__())
 
 	def addNode(self, node):	#If == Error	
+		def addFirstNode(node):
+			temp = self.pointer
+			if temp == None:
+				self.pointer = node
+				print(self.__repr__())
+				return
+			node.setNext(temp)
+			temp.setPrevious(node)
+			# node <-> self.pointer
+			self.pointer = node
+			# self.pointer -> node
+			print(self.__repr__())
+
+		def addNextNode(inputNode, nodeInList):
+			if nodeInList.getNext() == None:
+				nodeInList.setNext(inputNode)
+				inputNode.setPrevious(nodeInList)
+				# nodeInList <-> inputNode
+				print(self.__repr__())
+				return
+
+			nextNode = nodeInList.getNext()
+
+			inputNode.setNext(nextNode)
+			nextNode.setPrevious(inputNode)
+			# inputNode <-> nextNode
+			nodeInList.setNext(inputNode)
+			inputNode.setPrevious(nodeInList)
+			# nodeInList <-> inputNode
+			print(self.__repr__())
+		
 		temp = self.searchNode(node)
 		if temp == None:
-			self.addFirstNode(node)
+			addFirstNode(node)
 			return
-		self.addNextNode(inputNode=node, nodeInList=temp)
+		addNextNode(inputNode=node, nodeInList=temp)
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
-
-	def addFirstNode(self, node):
-		temp = self.pointer
-		if temp == None:
-			self.pointer = node
-				print(self.__repr__())
-			return
-		node.setNext(temp)
-		temp.setPrevious(node)
-		# node <-> self.pointer
-		self.pointer = node
-		# self.pointer -> node
-			print(self.__repr__())
-
-	def addNextNode(self, inputNode, nodeInList):
-		if nodeInList.getNext() == None:
-			nodeInList.setNext(inputNode)
-			inputNode.setPrevious(nodeInList)
-			# nodeInList <-> inputNode
-				print(self.__repr__())
-			return
-
-		nextNode = nodeInList.getNext()
-
-		inputNode.setNext(nextNode)
-		nextNode.setPrevious(inputNode)
-		# inputNode <-> nextNode
-		nodeInList.setNext(inputNode)
-		inputNode.setPrevious(nodeInList)
-		# nodeInList <-> inputNode
-			print(self.__repr__())
 
 	def searchNode(self, node):
 		temp = self.pointer
@@ -82,6 +82,22 @@ class LinkedListPictures:
 		return temp
 
 	def deleteNode(self, node):
+		def deleteLastNode(node):
+			preNode = node.getPrevious()
+			preNode.setNext(None)
+		
+		def deleteFirstNode(node):
+			nextNode = node.getNext()
+			self.pointer = nextNode
+			nextNode.setPrevious(None)
+
+		def deleteBetweenNode(node):
+			nextNode = node.getNext()
+			preNode = node.getPrevious()
+			preNode.setNext(nextNode)
+			nextNode.setPrevious(preNode)
+			# preNode <-> nextNode
+
 		pointer = self.searchNode(node)
 		if pointer == None or node.__cmp__(pointer) != 0:
 			return
@@ -91,30 +107,14 @@ class LinkedListPictures:
 			self.pointer = None
 		# First Node
 		elif pointer == self.pointer:
-			self.deleteFirstNode(pointer)
+			deleteFirstNode(pointer)
 		# Last Node
 		elif pointer.next == None:
-			self.deleteLastNode(pointer)
+			deleteLastNode(pointer)
 		# Between Node
 		else:	
-			self.deleteBetweenNode(pointer)
+			deleteBetweenNode(pointer)
 		print("The picture successfully deleted")
-	
-	def deleteLastNode(self, node):
-		preNode = node.getPrevious()
-		preNode.setNext(None)
-		
-	def deleteFirstNode(self, node):
-		nextNode = node.getNext()
-		self.pointer = nextNode
-		nextNode.setPrevious(None)
-
-	def deleteBetweenNode(self, node):
-		nextNode = node.getNext()
-		preNode = node.getPrevious()
-		preNode.setNext(nextNode)
-		nextNode.setPrevious(preNode)
-		# preNode <-> nextNode
 
 	def __str__(self):
 		pass
