@@ -637,7 +637,6 @@ class Ui_all_in_one(object):
 		elif self.counter >= 1:
 			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
 			self.l1.addData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
-		print(self.l1.__repr__())
 
 	def searchInAll(self):
 		self.y2 = self.searchYear.text()
@@ -653,7 +652,6 @@ class Ui_all_in_one(object):
 			self.searchPicturePlace.setPixmap(pixmap)
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
-			print(self.l1.__repr__())
 			print(infoTuple)
 		except AttributeError:
 			msg = QMessageBox()
@@ -688,7 +686,6 @@ class Ui_all_in_one(object):
 	def finalDel(self):
 		newDel = Node(self.infoTuple[0],self.infoTuple[1].year, self.infoTuple[1].month, self.infoTuple[1].day, self.infoTuple[1].hour,self.infoTuple[1].minute, self.infoTuple[2])
 		self.l1.deleteNode(newDel)
-		print(self.l1.__repr__())
 		msg = QMessageBox()
 		msg.setWindowTitle("Deleted")
 		msg.setText("The picture is successfully deleted.")
@@ -711,7 +708,6 @@ class Ui_all_in_one(object):
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
 			print(infoTuple)
-			print(self.l1.__repr__())
 			
 		except AttributeError:
 			msg = QMessageBox()
