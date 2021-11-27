@@ -652,7 +652,6 @@ class Ui_all_in_one(object):
 			self.searchPicturePlace.setPixmap(pixmap)
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
-			print(infoTuple)
 		except AttributeError:
 			msg = QMessageBox()
 			msg.setWindowTitle("Wrong Information")
@@ -707,7 +706,6 @@ class Ui_all_in_one(object):
 			self.searchPicturePlace.setPixmap(pixmap)
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
-			print(infoTuple)
 			
 		except AttributeError:
 			msg = QMessageBox()

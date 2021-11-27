@@ -6,7 +6,7 @@ from node import *
 class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
-		print(self.__repr__())
+		print(Fore.CYAN + 'Primary list: ' + Fore.RESET + self.__repr__())
 
 	def addNode(self, node):	#If == Error	
 		def addFirstNode(node):
@@ -73,7 +73,7 @@ class LinkedListPictures:
 		if temp == None: # print Err
 			return self.pointer
 		if temp.getNext() == None:
-			print(Fore.YELLOW + '[Last Node] Not Found next node: ' + node.__repr__() + Fore.RESET)
+			print(Fore.YELLOW + '[Last Node] Not Found next node ' + node.__repr__() + Fore.RESET)
 			return None
 		if tag == None or tag == False:
 			print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET, end=' ')
@@ -83,7 +83,7 @@ class LinkedListPictures:
 		while temp.getTag() != True:
 			temp = temp.getNext()
 			if temp == None:
-				print(Fore.YELLOW + 'Not Found next node: ' + node.__repr__() + Fore.RESET)
+				print(Fore.YELLOW + 'Not Found next node ' + node.__repr__() + Fore.RESET)
 				return None
 		print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET + node.__repr__(), end=' ')
 		print(temp.__repr__())
