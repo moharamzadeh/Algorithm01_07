@@ -4,6 +4,7 @@ from node import *
 class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
+		print(self.__repr__())
 
 	def addNode(self, node):	#If == Error	
 		temp = self.searchNode(node)
@@ -20,18 +21,21 @@ class LinkedListPictures:
 		temp = self.pointer
 		if temp == None:
 			self.pointer = node
+				print(self.__repr__())
 			return
 		node.setNext(temp)
 		temp.setPrevious(node)
 		# node <-> self.pointer
 		self.pointer = node
 		# self.pointer -> node
+			print(self.__repr__())
 
 	def addNextNode(self, inputNode, nodeInList):
 		if nodeInList.getNext() == None:
 			nodeInList.setNext(inputNode)
 			inputNode.setPrevious(nodeInList)
 			# nodeInList <-> inputNode
+				print(self.__repr__())
 			return
 
 		nextNode = nodeInList.getNext()
@@ -42,6 +46,7 @@ class LinkedListPictures:
 		nodeInList.setNext(inputNode)
 		inputNode.setPrevious(nodeInList)
 		# nodeInList <-> inputNode
+			print(self.__repr__())
 
 	def searchNode(self, node):
 		temp = self.pointer
