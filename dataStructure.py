@@ -85,7 +85,7 @@ class LinkedListPictures:
 			if temp == None:
 				print(Fore.YELLOW + 'Not Found next node ' + node.__repr__() + Fore.RESET)
 				return None
-		print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET + node.__repr__(), end=' ')
+		print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET, end=' ')
 		print(temp.__repr__())
 		return temp
 
@@ -140,5 +140,5 @@ class LinkedListPictures:
 			data.append(str(node.__repr__()))
 			node = node.getNext()
 		data.append('None')
-		return ' <-> '.join(data)
+		return ' <> '.join(data)
 
