@@ -1,4 +1,6 @@
 import datetime
+from colorama import Fore
+import colorama
 from node import *
 
 class LinkedListPictures:
@@ -11,21 +13,24 @@ class LinkedListPictures:
 			temp = self.pointer
 			if temp == None:
 				self.pointer = node
-				print(self.__repr__())
+				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__repr__())
+				print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 				return
 			node.setNext(temp)
 			temp.setPrevious(node)
 			# node <-> self.pointer
 			self.pointer = node
 			# self.pointer -> node
-			print(self.__repr__())
+			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__repr__())
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 
 		def addNextNode(inputNode, nodeInList):
 			if nodeInList.getNext() == None:
 				nodeInList.setNext(inputNode)
 				inputNode.setPrevious(nodeInList)
 				# nodeInList <-> inputNode
-				print(self.__repr__())
+				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__repr__())
+				print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 				return
 
 			nextNode = nodeInList.getNext()
@@ -36,7 +41,8 @@ class LinkedListPictures:
 			nodeInList.setNext(inputNode)
 			inputNode.setPrevious(nodeInList)
 			# nodeInList <-> inputNode
-			print(self.__repr__())
+			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__repr__())
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 		
 		temp = self.searchNode(node)
 		if temp == None:
@@ -47,6 +53,8 @@ class LinkedListPictures:
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
+		print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__repr__())
+		print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 
 	def searchNode(self, node):
 		temp = self.pointer
@@ -62,34 +70,38 @@ class LinkedListPictures:
 
 	def searchNextNodeByTag(self, node, tag=None):
 		temp = self.searchNode(node)
-		if temp == None:
+		if temp == None: # print Err
 			return self.pointer
 		if temp.getNext() == None:
-			print('Not Found: Last Node')
+			print(Fore.YELLOW + '[Last Node] Not Found next node: ' + node.__repr__() + Fore.RESET)
 			return None
-
 		if tag == None or tag == False:
+			print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET, end=' ')
+			print(temp.getNext().__repr__())
 			return temp.getNext()
-
-
 		temp = temp.getNext()
-
 		while temp.getTag() != True:
 			temp = temp.getNext()
 			if temp == None:
-				print('Not Found: Not exist')
+				print(Fore.YELLOW + 'Not Found next node: ' + node.__repr__() + Fore.RESET)
 				return None
+		print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET + node.__repr__(), end=' ')
+		print(temp.__repr__())
 		return temp
 
 	def deleteNode(self, node):
 		def deleteLastNode(node):
 			preNode = node.getPrevious()
 			preNode.setNext(None)
+			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__repr__())
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 		
 		def deleteFirstNode(node):
 			nextNode = node.getNext()
 			self.pointer = nextNode
 			nextNode.setPrevious(None)
+			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__repr__())
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 
 		def deleteBetweenNode(node):
 			nextNode = node.getNext()
@@ -97,6 +109,8 @@ class LinkedListPictures:
 			preNode.setNext(nextNode)
 			nextNode.setPrevious(preNode)
 			# preNode <-> nextNode
+			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__repr__())
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 
 		pointer = self.searchNode(node)
 		if pointer == None or node.__cmp__(pointer) != 0:
@@ -105,6 +119,7 @@ class LinkedListPictures:
 		# length(list) == 1
 		if pointer == self.pointer and pointer.getNext() == None:
 			self.pointer = None
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__repr__())
 		# First Node
 		elif pointer == self.pointer:
 			deleteFirstNode(pointer)
@@ -114,7 +129,6 @@ class LinkedListPictures:
 		# Between Node
 		else:	
 			deleteBetweenNode(pointer)
-		print("The picture successfully deleted")
 
 	def __str__(self):
 		pass
