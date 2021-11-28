@@ -163,7 +163,7 @@ class LinkedListPictures:
 			self.__printLog(object=self, operation='l')
 
 		nodeInList = self.searchNode(node, equal=True)
-		if nodeInList is None or node.__cmp__(nodeInList) != 0:
+		if (nodeInList is None) or (node != nodeInList):
 			self.__printLog(object=node, operation='nF')
 			self.__printLog(object=self, operation='l')
 			return
