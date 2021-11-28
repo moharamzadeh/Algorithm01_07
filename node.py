@@ -72,6 +72,24 @@ class Node:
 	def getTag(self):
 		return self.tag
 
+	def __eq__(self, node): # self == node
+		pass
+
+	def __ne__(self, node): # self != node
+		pass
+
+	def __lt__(self, node): # self < node
+		pass
+
+	def __le__(self, node): # self <= node
+		pass
+
+	def __gt__(self, node): # self > node
+		pass
+
+	def __ge__(self, node): # self >= node
+		pass
+
 	def __cmp__(self, node):
 		if self.getDateTime() > node.getDateTime():
 			return 1
