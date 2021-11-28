@@ -8,10 +8,14 @@ class Node:
 		self.next = None
 		self.previous = None
 
-	def changeData(self, address, year, month, day, hour, minute, tag=False):
-		self.address = address
-		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
-		self.tag = tag
+	def changeDataByData(self, address, year, month, day, hour, minute, tag=False):
+		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
+		self.changeDataByNode(node)
+
+	def changeDataByNode(self, node):
+		self.address = node.getAddress()
+		self.dateTime = node.getDateTime()
+		self.tag = node.getTag()
 
 	def createNodeTimeDate(self, timeDate):
 		pass
