@@ -17,9 +17,6 @@ class Node:
 		self.dateTime = node.getDateTime()
 		self.tag = node.getTag()
 
-	def createNodeByTimeDate(self, year, month, day, hour, minute):
-		pass
-
 	def changeDateToInt(self, month):
 		if isinstance(month, int):
 			return month
