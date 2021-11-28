@@ -8,7 +8,7 @@ class LinkedListPictures:
 		self.pointer = node
 		self.__printLog(object=self, operation='l')
 
-	def addNode(self, node):	#If == Error	
+	def addNode(self, node):
 		def addFirstNode(node):
 			pointer = self.pointer
 			if pointer is None:

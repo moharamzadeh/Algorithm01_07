@@ -40,7 +40,8 @@ class Node:
 
 	def getInformation(self):
 		nodeInfo = (self.address, self.dateTime, self.tag)
-		return nodeInfo # [address, date & time, tag]
+		return nodeInfo
+		# [address, date & time, tag]
 
 	def printInformation(self, index=None):
 		if index is None:
