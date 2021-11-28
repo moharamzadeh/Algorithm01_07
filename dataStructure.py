@@ -201,7 +201,7 @@ class LinkedListPictures:
 		'l': Fore.CYAN + 'list',
 		'nF': Fore.YELLOW + 'not found',
 		'nFN': Fore.YELLOW + 'Not Found next node',
-		'nFNT': Fore.YELLOW + 'Not Found next TRUE node',
+		'nFNT': Fore.YELLOW + 'not found next TRUE node',
 		's': Fore.GREEN + 'search',
 		'sN': Fore.GREEN + 'search next node',
 		'sNT': Fore.GREEN + 'search next TRUE node',
