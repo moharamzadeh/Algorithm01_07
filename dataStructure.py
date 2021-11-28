@@ -66,27 +66,41 @@ class LinkedListPictures:
 			return temp.getPrevious()
 		return temp
 
-	def searchNextNodeByTag(self, node, tag=None):
-		temp = self.searchNode(node)
-		if temp == None: # print Err
+	def searchNextNodeByTag(self, inputNode, tag=None):
+		def searchNextNodeTrue(node):
+			if self.pointer == None:
+				return None
+			if node == None:
+				return self.pointer
+			if node.getNext() == None:
+				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
+				return None
+			node = node.getNext()
+			while node.getTag() != True:
+				node = node.getNext()
+				if node == None:
+					print(Fore.YELLOW + 'Not Found next node ' + inputNode.__repr__() + Fore.RESET)
+					return None
+			print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
+			print(node.__repr__())
+			return node
+		
+
+
+
+		nodeInList = self.searchNode(inputNode)
+		if nodeInList == None and tag == None: # print Err
 			return self.pointer
-		if temp.getNext() == None:
-			print(Fore.YELLOW + '[Last Node] Not Found next node ' + node.__repr__() + Fore.RESET)
+		if nodeInList.getNext() == None:
+			print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
 			return None
 		if tag == None or tag == False:
-			print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET, end=' ')
-			print(temp.getNext().__repr__())
-			return temp.getNext()
-		temp = temp.getNext()
-		while temp.getTag() != True:
-			temp = temp.getNext()
-			if temp == None:
-				print(Fore.YELLOW + 'Not Found next node ' + node.__repr__() + Fore.RESET)
-				return None
-		print(Fore.GREEN + 'Search next node ' + node.__repr__() + ':' + Fore.RESET, end=' ')
-		print(temp.__repr__())
-		return temp
-
+			print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
+			print(nodeInList.getNext().__repr__())
+			return nodeInList.getNext()
+		searchNextNodeTrue(nodeInList)
+		
+		
 	def deleteNode(self, node):
 		def deleteLastNode(node):
 			preNode = node.getPrevious()
