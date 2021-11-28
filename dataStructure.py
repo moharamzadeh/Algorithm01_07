@@ -69,41 +69,46 @@ class LinkedListPictures:
 	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
 			if self.pointer == None:
-				print(Fore.YELLOW + '[List is empty] Not Found TRUE next node ' + str(inputNode) + Fore.RESET + Fore.RESET)
+				self.__printLog(object=inputNode, operation='nF')
 				return None
 			if node == None:
 				if self.pointer.getTag() == True:
-					print(Fore.GREEN + 'Search next TRUE node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
-					print(str(self.pointer))
+					self.__printLog(object=self.pointer, operation='sNT', logObject=inputNode)
+					self.__printLog(object=self, operation='l')
 					return self.pointer
-				print(Fore.YELLOW + 'Not Found next TRUE node ' + str(inputNode) + Fore.RESET)
+				self.__printLog(object=inputNode, operation='nFNT')
+				self.__printLog(object=self, operation='l')
 				return None
 			if node.getNext() == None:
-				print(Fore.YELLOW + '[Last Node] Not Found next TRUE node ' + str(inputNode) + Fore.RESET)
+				self.__printLog(object=inputNode, operation='nFNT')
+				self.__printLog(object=self, operation='l')
 				return None
 			node = node.getNext()
 			while node.getTag() != True:
 				node = node.getNext()
 				if node == None:
-					print(Fore.YELLOW + 'Not Found next TRUE node ' + str(inputNode) + Fore.RESET)
+					self.__printLog(object=inputNode, operation='nFNT')
+					self.__printLog(object=self, operation='l')
 					return None
-			print(Fore.GREEN + 'Search next TRUE node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
-			print(node)
+			self.__printLog(object=node, operation='sNT', logObject=inputNode)
+			self.__printLog(object=self, operation='l')
 			return node
 		
 		def searchNextNode(node):
 			if self.pointer == None:
-				print(Fore.YELLOW + '[List is empty] Not Found next node ' + str(inputNode) + Fore.RESET + Fore.RESET)
+				self.__printLog(object=inputNode, operation='nFN')
+				self.__printLog(object=self, operation='l')
 				return None
 			if node == None:
-				print(Fore.GREEN + 'Search next node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
-				print(self.pointer)
+				self.__printLog(object=self.pointer, operation='sN', logObject=inputNode)
+				self.__printLog(object=self, operation='l')
 				return self.pointer
 			if node.getNext() == None:
-				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__str__() + Fore.RESET)
+				self.__printLog(object=inputNode, operation='nFN')
+				self.__printLog(object=self, operation='l')
 				return None
-			print(Fore.GREEN + 'Search next node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
-			print(node.getNext())
+			self.__printLog(object=node.getNext(), operation='sN', logObject=inputNode)
+			self.__printLog(object=self, operation='l')
 			return node.getNext()
 
 		nodeInList = self.searchNode(inputNode)
@@ -167,5 +172,14 @@ class LinkedListPictures:
 		print(self)
 
 	def __printLog(self, object, operation, logObject=''):
-		operationDict = {'d': Fore.RED + 'deleted', 'a': Fore.LIGHTMAGENTA_EX + 'added', 'l': Fore.CYAN + 'list', 'nF': Fore.YELLOW + 'not found', 's': Fore.GREEN + 'search', 'sN': Fore.GREEN + 'search next node'}
-		print(operationDict[operation] + ' ' + str(logObject)+ Fore.RESET + str(object))
+		operationDict = {
+		'd': Fore.RED +'deleted',
+		'a': Fore.LIGHTMAGENTA_EX + 'added',
+		'l': Fore.CYAN + 'list',
+		'nF': Fore.YELLOW + 'not found',
+		'nFN': Fore.YELLOW + 'Not Found next node',
+		'nFNT': Fore.YELLOW + 'Not Found next TRUE node',
+		's': Fore.GREEN + 'search',
+		'sN': Fore.GREEN + 'search next node',
+		'sNT': Fore.GREEN + 'search next TRUE node'}
+		print(operationDict[operation] + ' ' + str(logObject) + ' ' + Fore.RESET + str(object))
