@@ -3,7 +3,7 @@ import datetime
 class Node:
 	def __init__(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
-		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
+		self.dateTime = datetime.datetime(year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		self.tag = tag
 		self.next = None
 		self.previous = None
@@ -13,7 +13,7 @@ class Node:
 		return node
 
 	def changeDataByData(self, address, year, month, day, hour, minute, tag=False):
-		node = Node(address=address, year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute, tag=tag)
+		node = Node(address=address, year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute, tag=tag)
 		self.changeDataByNode(node)
 
 	def changeDataByNode(self, node):
@@ -21,13 +21,13 @@ class Node:
 		self.dateTime = node.getDateTime()
 		self.tag = node.getTag()
 
-	def changeDateToInt(self, month):
+	def changeDateToInt(month):
 		if isinstance(month, int):
 			return month
 		listMonth = {'january': 1,'february': 2, 'march':3, 'april': 4, 'may': 5, 'june': 6, 'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12}
 		return listMonth[month.lower()]
 
-	def changeIntToDate(self, month):
+	def changeIntToDate(month):
 		if isinstance(month, str):
 			return month
 		listMonth = {1: 'january', 2: 'february', 3: 'march', 4: 'april', 5: 'may', 6: 'june', 7: 'july', 8: 'august', 9: 'september', 10: 'october', 11: 'november', 12: 'december'}
@@ -48,12 +48,12 @@ class Node:
 		self.dateTime = datetime.datetime.combine(date=date, time=time)
 
 	def setDate(self, year, month, day):
-		date = datetime.date(year=year, month=self.changeDateToInt(month), day=day)
+		date = datetime.date(year=year, month=Node.changeDateToInt(month), day=day)
 		time = self.getTime()
 		self.dateTime = datetime.datetime.combine(date=date, time=time)
 
 	def setDateTime(self, year, month, day, hour, minute):
-		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
+		self.dateTime = datetime.datetime(year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
 
 	def setTag(self, tag):
 		self.tag = tag
