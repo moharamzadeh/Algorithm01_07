@@ -719,7 +719,7 @@ class Ui_all_in_one(object):
 		self.mn2= self.searchMin.text()
 		tagSearcher = Node("", int(self.y2), self.mo2, int(self.d2), int(self.h2), int(self.mn2), self.ev)
 		try:
-			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tag= True).getInformation()
+			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tagIsImportant= True).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
 			pixmapSize = pixmap.scaled(480, 430)
 			self.searchPicturePlace.setPixmap(pixmap)
