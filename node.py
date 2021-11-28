@@ -43,15 +43,6 @@ class Node:
 		return nodeInfo
 		# [address, date & time, tag]
 
-	def printInformation(self, index=None):
-		if index is None:
-			print(self.getInformation
-			()[0] + '  ' + str(self.getInformation()[1]) + '  ' + str(self.getInformation()[2]))
-			return self.getInformation()
-		info = self.getInformation()[index]
-		print(info)
-		return info
-
 	def getAddress(self):
 		return self.address
 
