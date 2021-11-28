@@ -185,7 +185,7 @@ class LinkedListPictures:
 	def __str__(self):
 		data = ['pointer']
 		node = self.pointer
-		while node != None:
+		while node is not None:
 			data.append(str(node))
 			node = node.getNext()
 		data.append('None')
