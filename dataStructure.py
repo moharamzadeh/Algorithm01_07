@@ -6,31 +6,31 @@ from node import *
 class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
-		print(Fore.CYAN + 'Primary list: ' + Fore.RESET + str(self))
+		self.__printLog(object=self, operation='l')
 
 	def addNode(self, node):	#If == Error	
 		def addFirstNode(node):
 			temp = self.pointer
 			if temp == None:
 				self.pointer = node
-				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
-				print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+				self.__printLog(object=node, operation='a')
+				self.__printLog(object=self, operation='l')
 				return
 			node.setNext(temp)
 			temp.setPrevious(node)
 			# node <-> self.pointer
 			self.pointer = node
 			# self.pointer -> node
-			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+			self.__printLog(object=node, operation='a')
+			self.__printLog(object=self, operation='l')
 
 		def addNextNode(inputNode, nodeInList):
 			if nodeInList.getNext() == None:
 				nodeInList.setNext(inputNode)
 				inputNode.setPrevious(nodeInList)
 				# nodeInList <-> inputNode
-				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
-				print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+				self.__printLog(object=node, operation='a')
+				self.__printLog(object=self, operation='l')
 				return
 
 			nextNode = nodeInList.getNext()
@@ -41,8 +41,8 @@ class LinkedListPictures:
 			nodeInList.setNext(inputNode)
 			inputNode.setPrevious(nodeInList)
 			# nodeInList <-> inputNode
-			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+			self.__printLog(object=node, operation='a')
+			self.__printLog(object=self, operation='l')
 		
 		temp = self.searchNode(node)
 		if temp == None:
@@ -115,15 +115,15 @@ class LinkedListPictures:
 		def deleteLastNode(node):
 			preNode = node.getPrevious()
 			preNode.setNext(None)
-			print(Fore.RED + 'Deleted: ' + Fore.RESET + str(node))
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+			self.__printLog(object=node, operation='d')
+			self.__printLog(object=self, operation='l')
 		
 		def deleteFirstNode(node):
 			nextNode = node.getNext()
 			self.pointer = nextNode
 			nextNode.setPrevious(None)
-			print(Fore.RED + 'Deleted: ' + Fore.RESET + str(node))
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+			self.__printLog(object=node, operation='d')
+			self.__printLog(object=self, operation='l')
 
 		def deleteBetweenNode(node):
 			nextNode = node.getNext()
@@ -131,13 +131,13 @@ class LinkedListPictures:
 			preNode.setNext(nextNode)
 			nextNode.setPrevious(preNode)
 			# preNode <-> nextNode
-			print(Fore.RED + 'Deleted: ' + Fore.RESET + str(node))
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
+			self.__printLog(object=node, operation='d')
+			self.__printLog(object=self, operation='l')
 
 		pointer = self.searchNode(node)
 		if pointer == None or node.__cmp__(pointer) != 0:
-			print(Fore.YELLOW + 'Not Found (for delete): ' + Fore.RESET + str(node))
-			print(Fore.CYAN + 'List: ' + Fore.RESET + str(self))
+			self.__printLog(object=node, operation='nF')
+			self.__printLog(object=self, operation='l')
 			return
 		
 		# length(list) == 1
@@ -168,4 +168,4 @@ class LinkedListPictures:
 
 	def __printLog(self, object, operation, logObject=''):
 		operationDict = {'d': Fore.RED + 'deleted', 'a': Fore.LIGHTMAGENTA_EX + 'added', 'l': Fore.CYAN + 'list', 'nF': Fore.YELLOW + 'not found', 's': Fore.GREEN + 'search', 'sN': Fore.GREEN + 'search next node'}
-		print(operationDict[operation] + ' ' + str(logObject) + ': ' + Fore.RESET + str(object))
+		print(operationDict[operation] + ' ' + str(logObject)+ Fore.RESET + str(object))
