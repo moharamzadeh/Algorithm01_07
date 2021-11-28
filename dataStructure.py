@@ -10,14 +10,14 @@ class LinkedListPictures:
 
 	def addNode(self, node):	#If == Error	
 		def addFirstNode(node):
-			temp = self.pointer
-			if temp is None:
+			pointer = self.pointer
+			if pointer is None:
 				self.pointer = node
 				self.__printLog(object=node, operation='a')
 				self.__printLog(object=self, operation='l')
 				return
-			node.setNext(temp)
-			temp.setPrevious(node)
+			node.setNext(pointer)
+			pointer.setPrevious(node)
 			# node <-> self.pointer
 			self.pointer = node
 			# self.pointer -> node
@@ -44,44 +44,44 @@ class LinkedListPictures:
 			self.__printLog(object=node, operation='a')
 			self.__printLog(object=self, operation='l')
 		
-		temp = self.searchNode(node)
-		if temp is None:
+		nodeInList = self.searchNode(node)
+		if nodeInList is None:
 			addFirstNode(node)
 			return
-		addNextNode(inputNode=node, nodeInList=temp)
+		addNextNode(inputNode=node, nodeInList=nodeInList)
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		node = Node(address=address, year=year, month=month, day=day, hour=hour, minute=minute, tag=tag)
 		self.addNode(node)
 
 	def existNode(self, node):
-		temp = self.searchNode(node=node, equal=True)
-		if temp is None:
+		nodeInList = self.searchNode(node=node, equal=True)
+		if nodeInList is None:
 			return False
 		return True
 
 	def searchNode(self, node, equal=False):
 		def search(node):
-			temp = self.pointer
-			if node is None or temp is None:
+			nodeInList = self.pointer
+			if node is None or nodeInList is None:
 				return None
-			while temp.__cmp__(node) < 0 :
-				if temp.next is None :
-					return temp
-				temp = temp.next
-			if temp.__cmp__(node) > 0: 
-				return temp.getPrevious()
-			return temp
+			while nodeInList.__cmp__(node) < 0 :
+				if nodeInList.next is None :
+					return nodeInList
+				nodeInList = nodeInList.next
+			if nodeInList.__cmp__(node) > 0: 
+				return nodeInList.getPrevious()
+			return nodeInList
 
-		temp = search(node)
-		if temp is None:
+		nodeInList = search(node)
+		if nodeInList is None:
 			return None
 		if equal is True:
-			if temp.__cmp__(node) == 0:
-				return temp
+			if nodeInList.__cmp__(node) == 0:
+				return nodeInList
 			return None
 
-		return temp
+		return nodeInList
 
 	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
