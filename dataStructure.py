@@ -1,4 +1,5 @@
 import datetime
+from os import O_NOFOLLOW
 from colorama import Fore
 import colorama
 from node import *
@@ -171,6 +172,7 @@ class LinkedListPictures:
 		# length(list) == 1
 		if nodeInList == self.pointer and nodeInList.getNext() is None:
 			self.pointer = None
+			self.__printLog(object=self, operation='l')
 			print(Fore.CYAN + 'List: ' + Fore.RESET + str(self))
 		# First Node
 		elif nodeInList == self.pointer:
