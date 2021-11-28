@@ -45,6 +45,12 @@ class LinkedListPictures:
 			self.__printLog(object=self, operation='l')
 		
 		nodeInList = self.searchNode(node)
+		if (nodeInList is not None) and (nodeInList.__cmp__(node) == 0):
+			self.__printLog(object=node, operation='ch', logObject=nodeInList)
+			nodeInList.changeDataByNode(node)
+			self.__printLog(object=self, operation='l')
+			return
+
 		if nodeInList is None:
 			addFirstNode(node)
 			return
@@ -198,5 +204,6 @@ class LinkedListPictures:
 		'nFNT': Fore.YELLOW + 'Not Found next TRUE node',
 		's': Fore.GREEN + 'search',
 		'sN': Fore.GREEN + 'search next node',
-		'sNT': Fore.GREEN + 'search next TRUE node'}
+		'sNT': Fore.GREEN + 'search next TRUE node',
+		'ch': Fore.YELLOW + 'change node'}
 		print(operationDict[operation] + ' ' + str(logObject) + ' ' + Fore.RESET + str(object))
