@@ -9,7 +9,7 @@ class Node:
 		self.previous = None
 
 	def createNodeByTimeDate(year, month, day, hour, minute):
-		node = Node(address='', year=year, month=Node.changeDateToInt(Node, month=month), day=day, hour=hour, minute=minute)
+		node = Node(address='', year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		return node
 
 	def changeDataByData(self, address, year, month, day, hour, minute, tag=False):
