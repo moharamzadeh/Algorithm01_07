@@ -182,6 +182,10 @@ class LinkedListPictures:
 		else:	
 			deleteBetweenNode(nodeInList)
 
+	def deleteNodeByTime(self, year, month, day, hour, minute):
+		node = Node(address='', year=year, month=month, day=day, hour=hour, minute=minute)
+		self.deleteNode(node)
+
 	def __str__(self):
 		data = ['pointer']
 		node = self.pointer
