@@ -166,3 +166,6 @@ class LinkedListPictures:
 	def __repr__(self):
 		print(self)
 
+	def __printLog(self, object, operation, logObject=''):
+		operationDict = {'d': Fore.RED + 'deleted', 'a': Fore.LIGHTMAGENTA_EX + 'added', 'l': Fore.CYAN + 'list', 'nF': Fore.YELLOW + 'not found', 's': Fore.GREEN + 'search', 'sN': Fore.GREEN + 'search next node'}
+		print(operationDict[operation] + ' ' + str(logObject) + ': ' + Fore.RESET + str(object))
