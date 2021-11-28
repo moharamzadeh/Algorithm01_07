@@ -35,6 +35,25 @@ class Node:
 	def setPrevious(self, previous):
 		self.previous = previous
 
+	def setAddress(self, address):
+		self.address == address
+
+	def setTime(self, hour, minute):
+		date = self.getDate()
+		time = datetime.time(hour=hour, minute=minute)
+		self.dateTime = datetime.datetime.combine(date=date, time=time)
+
+	def setDate(self, year, month, day):
+		date = datetime.date(year=year, month=self.changeDateToInt(month), day=day)
+		time = self.getTime()
+		self.dateTime = datetime.datetime.combine(date=date, time=time)
+
+	def setDateTime(self, year, month, day, hour, minute):
+		self.dateTime = datetime.datetime(year=year, month=self.changeDateToInt(month), day=day, hour=hour, minute=minute)
+
+	def setTag(self, tag):
+		self.tag = tag
+
 	def getInformation(self):
 		nodeInfo = (self.address, self.dateTime, self.tag)
 		return nodeInfo
