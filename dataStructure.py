@@ -156,25 +156,25 @@ class LinkedListPictures:
 			self.__printLog(object=node, operation='d')
 			self.__printLog(object=self, operation='l')
 
-		pointer = self.searchNode(node, equal=True)
-		if pointer is None or node.__cmp__(pointer) != 0:
+		nodeInList = self.searchNode(node, equal=True)
+		if nodeInList is None or node.__cmp__(nodeInList) != 0:
 			self.__printLog(object=node, operation='nF')
 			self.__printLog(object=self, operation='l')
 			return
 		
 		# length(list) == 1
-		if pointer == self.pointer and pointer.getNext() is None:
+		if nodeInList == self.pointer and nodeInList.getNext() is None:
 			self.pointer = None
 			print(Fore.CYAN + 'List: ' + Fore.RESET + str(self))
 		# First Node
-		elif pointer == self.pointer:
-			deleteFirstNode(pointer)
+		elif nodeInList == self.pointer:
+			deleteFirstNode(nodeInList)
 		# Last Node
-		elif pointer.next is None:
-			deleteLastNode(pointer)
+		elif nodeInList.next is None:
+			deleteLastNode(nodeInList)
 		# Between Node
 		else:	
-			deleteBetweenNode(pointer)
+			deleteBetweenNode(nodeInList)
 
 	def __str__(self):
 		data = ['pointer']
