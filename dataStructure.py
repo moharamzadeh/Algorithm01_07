@@ -71,7 +71,7 @@ class LinkedListPictures:
 			if self.pointer == None:
 				return None
 			if node == None:
-				return self.pointer
+				node = self.pointer
 			if node.getNext() == None:
 				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
 				return None
@@ -85,20 +85,18 @@ class LinkedListPictures:
 			print(node.__repr__())
 			return node
 		
-
-
-
 		nodeInList = self.searchNode(inputNode)
-		if nodeInList == None and tag == None: # print Err
-			return self.pointer
-		if nodeInList.getNext() == None:
-			print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
-			return None
 		if tag == None or tag == False:
+			if nodeInList == None: # print Err
+				return self.pointer
+			if nodeInList.getNext() == None:
+				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
+				return None
 			print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
 			print(nodeInList.getNext().__repr__())
 			return nodeInList.getNext()
-		searchNextNodeTrue(nodeInList)
+
+		return searchNextNodeTrue(nodeInList)
 		
 		
 	def deleteNode(self, node):
