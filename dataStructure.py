@@ -69,19 +69,23 @@ class LinkedListPictures:
 	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
 			if self.pointer == None:
+				print(Fore.YELLOW + '[List is empty] Not Found TRUE next node ' + inputNode.__repr__() + Fore.RESET + Fore.RESET)
 				return None
 			if node == None:
-				print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
-				print(self.pointer.__repr__())
-				return self.pointer
+				if self.pointer.getTag() == True:
+					print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
+					print(self.pointer.__repr__())
+					return self.pointer
+				print(Fore.YELLOW + 'Not Found next TRUE node ' + inputNode.__repr__() + Fore.RESET)
+				return None
 			if node.getNext() == None:
-				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
+				print(Fore.YELLOW + '[Last Node] Not Found next TRUE node ' + inputNode.__repr__() + Fore.RESET)
 				return None
 			node = node.getNext()
 			while node.getTag() != True:
 				node = node.getNext()
 				if node == None:
-					print(Fore.YELLOW + 'Not Found next node ' + inputNode.__repr__() + Fore.RESET)
+					print(Fore.YELLOW + 'Not Found next TRUE node ' + inputNode.__repr__() + Fore.RESET)
 					return None
 			print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
 			print(node.__repr__())
@@ -89,6 +93,7 @@ class LinkedListPictures:
 		
 		def searchNextNode(node):
 			if self.pointer == None:
+				print(Fore.YELLOW + '[List is empty] Not Found next node ' + inputNode.__repr__() + Fore.RESET + Fore.RESET)
 				return None
 			if node == None:
 				print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
