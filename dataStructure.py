@@ -66,12 +66,14 @@ class LinkedListPictures:
 			return temp.getPrevious()
 		return temp
 
-	def searchNextNodeByTag(self, inputNode, tag=None):
+	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
 			if self.pointer == None:
 				return None
 			if node == None:
-				node = self.pointer
+				print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
+				print(self.pointer.__repr__())
+				return self.pointer
 			if node.getNext() == None:
 				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
 				return None
@@ -81,23 +83,28 @@ class LinkedListPictures:
 				if node == None:
 					print(Fore.YELLOW + 'Not Found next node ' + inputNode.__repr__() + Fore.RESET)
 					return None
-			print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
+			print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
 			print(node.__repr__())
 			return node
 		
-		nodeInList = self.searchNode(inputNode)
-		if tag == None or tag == False:
-			if nodeInList == None: # print Err
+		def searchNextNode(node):
+			if self.pointer == None:
+				return None
+			if node == None:
+				print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
+				print(self.pointer.__repr__())
 				return self.pointer
-			if nodeInList.getNext() == None:
+			if node.getNext() == None:
 				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__repr__() + Fore.RESET)
 				return None
 			print(Fore.GREEN + 'Search next node ' + inputNode.__repr__() + ':' + Fore.RESET, end=' ')
-			print(nodeInList.getNext().__repr__())
-			return nodeInList.getNext()
+			print(node.getNext().__repr__())
+			return node.getNext()
 
-		return searchNextNodeTrue(nodeInList)
-		
+		nodeInList = self.searchNode(inputNode)
+		if tagIsImportant == True:
+			return searchNextNodeTrue(nodeInList)
+		return searchNextNode(nodeInList)
 		
 	def deleteNode(self, node):
 		def deleteLastNode(node):
