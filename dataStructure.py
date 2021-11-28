@@ -45,7 +45,7 @@ class LinkedListPictures:
 			self.__printLog(object=self, operation='l')
 		
 		nodeInList = self.searchNode(node)
-		if (nodeInList is not None) and (nodeInList.__cmp__(node) == 0):
+		if (nodeInList is not None) and (nodeInList == node):
 			self.__printLog(object=node, operation='ch', logObject=nodeInList)
 			nodeInList.changeDataByNode(node)
 			self.__printLog(object=self, operation='l')
@@ -71,11 +71,11 @@ class LinkedListPictures:
 			nodeInList = self.pointer
 			if node is None or nodeInList is None:
 				return None
-			while nodeInList.__cmp__(node) < 0 :
+			while nodeInList < node :
 				if nodeInList.next is None :
 					return nodeInList
 				nodeInList = nodeInList.next
-			if nodeInList.__cmp__(node) > 0: 
+			if nodeInList > node: 
 				return nodeInList.getPrevious()
 			return nodeInList
 
@@ -83,7 +83,7 @@ class LinkedListPictures:
 		if nodeInList is None:
 			return None
 		if equal is True:
-			if nodeInList.__cmp__(node) == 0:
+			if nodeInList == node:
 				return nodeInList
 			return None
 
