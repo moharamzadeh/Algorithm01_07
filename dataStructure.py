@@ -6,31 +6,31 @@ from node import *
 class LinkedListPictures:
 	def __init__(self, node=None):
 		self.pointer = node
-		print(Fore.CYAN + 'Primary list: ' + Fore.RESET + self.__str__())
+		print(Fore.CYAN + 'Primary list: ' + Fore.RESET + str(self))
 
 	def addNode(self, node):	#If == Error	
 		def addFirstNode(node):
 			temp = self.pointer
 			if temp == None:
 				self.pointer = node
-				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__str__())
-				print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
+				print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 				return
 			node.setNext(temp)
 			temp.setPrevious(node)
 			# node <-> self.pointer
 			self.pointer = node
 			# self.pointer -> node
-			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__str__())
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 
 		def addNextNode(inputNode, nodeInList):
 			if nodeInList.getNext() == None:
 				nodeInList.setNext(inputNode)
 				inputNode.setPrevious(nodeInList)
 				# nodeInList <-> inputNode
-				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__str__())
-				print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+				print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
+				print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 				return
 
 			nextNode = nodeInList.getNext()
@@ -41,8 +41,8 @@ class LinkedListPictures:
 			nodeInList.setNext(inputNode)
 			inputNode.setPrevious(nodeInList)
 			# nodeInList <-> inputNode
-			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + node.__str__())
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+			print(Fore.LIGHTMAGENTA_EX + 'Added: ' + Fore.RESET + str(node))
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 		
 		temp = self.searchNode(node)
 		if temp == None:
@@ -69,41 +69,41 @@ class LinkedListPictures:
 	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
 			if self.pointer == None:
-				print(Fore.YELLOW + '[List is empty] Not Found TRUE next node ' + inputNode.__str__() + Fore.RESET + Fore.RESET)
+				print(Fore.YELLOW + '[List is empty] Not Found TRUE next node ' + str(inputNode) + Fore.RESET + Fore.RESET)
 				return None
 			if node == None:
 				if self.pointer.getTag() == True:
-					print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__str__() + ':' + Fore.RESET, end=' ')
-					print(self.pointer.__str__())
+					print(Fore.GREEN + 'Search next TRUE node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
+					print(str(self.pointer))
 					return self.pointer
-				print(Fore.YELLOW + 'Not Found next TRUE node ' + inputNode.__str__() + Fore.RESET)
+				print(Fore.YELLOW + 'Not Found next TRUE node ' + str(inputNode) + Fore.RESET)
 				return None
 			if node.getNext() == None:
-				print(Fore.YELLOW + '[Last Node] Not Found next TRUE node ' + inputNode.__str__() + Fore.RESET)
+				print(Fore.YELLOW + '[Last Node] Not Found next TRUE node ' + str(inputNode) + Fore.RESET)
 				return None
 			node = node.getNext()
 			while node.getTag() != True:
 				node = node.getNext()
 				if node == None:
-					print(Fore.YELLOW + 'Not Found next TRUE node ' + inputNode.__str__() + Fore.RESET)
+					print(Fore.YELLOW + 'Not Found next TRUE node ' + str(inputNode) + Fore.RESET)
 					return None
-			print(Fore.GREEN + 'Search next TRUE node ' + inputNode.__str__() + ':' + Fore.RESET, end=' ')
-			print(node.__str__())
+			print(Fore.GREEN + 'Search next TRUE node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
+			print(node)
 			return node
 		
 		def searchNextNode(node):
 			if self.pointer == None:
-				print(Fore.YELLOW + '[List is empty] Not Found next node ' + inputNode.__str__() + Fore.RESET + Fore.RESET)
+				print(Fore.YELLOW + '[List is empty] Not Found next node ' + str(inputNode) + Fore.RESET + Fore.RESET)
 				return None
 			if node == None:
-				print(Fore.GREEN + 'Search next node ' + inputNode.__str__() + ':' + Fore.RESET, end=' ')
-				print(self.pointer.__str__())
+				print(Fore.GREEN + 'Search next node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
+				print(self.pointer)
 				return self.pointer
 			if node.getNext() == None:
 				print(Fore.YELLOW + '[Last Node] Not Found next node ' + inputNode.__str__() + Fore.RESET)
 				return None
-			print(Fore.GREEN + 'Search next node ' + inputNode.__str__() + ':' + Fore.RESET, end=' ')
-			print(node.getNext().__str__())
+			print(Fore.GREEN + 'Search next node ' + str(inputNode) + ':' + Fore.RESET, end=' ')
+			print(node.getNext())
 			return node.getNext()
 
 		nodeInList = self.searchNode(inputNode)
@@ -115,15 +115,15 @@ class LinkedListPictures:
 		def deleteLastNode(node):
 			preNode = node.getPrevious()
 			preNode.setNext(None)
-			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__str__())
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+			print(Fore.RED + 'Deleted: ' + Fore.RESET + str(node))
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 		
 		def deleteFirstNode(node):
 			nextNode = node.getNext()
 			self.pointer = nextNode
 			nextNode.setPrevious(None)
-			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__str__())
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+			print(Fore.RED + 'Deleted: ' + Fore.RESET + str(node))
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 
 		def deleteBetweenNode(node):
 			nextNode = node.getNext()
@@ -131,19 +131,19 @@ class LinkedListPictures:
 			preNode.setNext(nextNode)
 			nextNode.setPrevious(preNode)
 			# preNode <-> nextNode
-			print(Fore.RED + 'Deleted: ' + Fore.RESET + node.__str__())
-			print(Fore.CYAN + 'New list: ' + Fore.RESET + self.__str__())
+			print(Fore.RED + 'Deleted: ' + Fore.RESET + str(node))
+			print(Fore.CYAN + 'New list: ' + Fore.RESET + str(self))
 
 		pointer = self.searchNode(node)
 		if pointer == None or node.__cmp__(pointer) != 0:
-			print(Fore.YELLOW + 'Not Found (for delete): ' + Fore.RESET + node.__str__())
-			print(Fore.CYAN + 'List: ' + Fore.RESET + self.__str__())
+			print(Fore.YELLOW + 'Not Found (for delete): ' + Fore.RESET + str(node))
+			print(Fore.CYAN + 'List: ' + Fore.RESET + str(self))
 			return
 		
 		# length(list) == 1
 		if pointer == self.pointer and pointer.getNext() == None:
 			self.pointer = None
-			print(Fore.CYAN + 'List: ' + Fore.RESET + self.__str__())
+			print(Fore.CYAN + 'List: ' + Fore.RESET + str(self))
 		# First Node
 		elif pointer == self.pointer:
 			deleteFirstNode(pointer)
