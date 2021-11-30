@@ -72,18 +72,6 @@ class LinkedListPictures:
 				if node.getNext() is None:
 					return node
 			return None
-			
-			
-		# 	nodeInList = self.pointer
-		# 	if node is None or nodeInList is None:
-		# 		return None
-		# 	while nodeInList < node :
-		# 		if nodeInList.next is None :
-		# 			return nodeInList
-		# 		nodeInList = nodeInList.next
-		# 	if nodeInList > node: 
-		# 		return nodeInList.getPrevious()
-		# 	return nodeInList
 
 		nodeInList = search(node)
 		if equal is not True:
@@ -91,14 +79,6 @@ class LinkedListPictures:
 		if nodeInList == node:
 			return nodeInList
 		return None
-
-		
-		# if nodeInList is None:
-		# 	return nodeInList
-		# if equal is True:
-		# 	if nodeInList == node:
-		# 		return nodeInList
-		# 	return None
 
 	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
