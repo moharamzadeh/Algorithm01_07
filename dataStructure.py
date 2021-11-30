@@ -59,10 +59,10 @@ class LinkedListPictures:
 		self.addNode(node)
 
 	def existNode(self, node):
-		nodeInList = self.searchNode(node=node, equal=True)
-		if nodeInList is None:
-			return False
-		return True
+		for nodeInList in self:
+			if nodeInList == node:
+				return True
+		return False
 
 	def searchNode(self, node, equal=False):
 		def search(inputNode):
