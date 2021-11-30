@@ -85,12 +85,16 @@ class LinkedListPictures:
 	def searchNextNodeByTag(self, node, tagIsImportant=None):
 		def searchNextNodeTrue(node):
 			if node is None:
-				LinkedListPictures.__printLog(object=self.pointer, operation='sN', logObject=node)
+				LinkedListPictures.__printLog(object=self.pointer, operation='sNT', logObject=node)
 				LinkedListPictures.__printLog(object=self, operation='l')
 				return None
 			for nodeInList in self:
 				if nodeInList >= node and nodeInList.getTag() is True:
+					LinkedListPictures.__printLog(object=nodeInList, operation='sNT', logObject=node)
+					LinkedListPictures.__printLog(object=self, operation='l')
 					return nodeInList
+			LinkedListPictures.__printLog(object=node, operation='nFNT')
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return None
 		
 		def searchNextNode(node):
@@ -100,7 +104,11 @@ class LinkedListPictures:
 				return self.pointer
 			for nodeInList in self:
 				if nodeInList >= node:
+					LinkedListPictures.__printLog(object=nodeInList, operation='sN', logObject=node)
+					LinkedListPictures.__printLog(object=self, operation='l')
 					return nodeInList.getNext()
+			LinkedListPictures.__printLog(object=node, operation='nFN')
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return None
 
 		if tagIsImportant == True:
