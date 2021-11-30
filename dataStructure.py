@@ -1,7 +1,4 @@
-import datetime
-from os import O_NOFOLLOW
 from colorama import Fore
-import colorama
 from node import *
 
 class LinkedListPictures:
