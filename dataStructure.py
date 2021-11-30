@@ -138,26 +138,27 @@ class LinkedListPictures:
 			LinkedListPictures.__printLog(object=nodeInList, operation='d')
 			LinkedListPictures.__printLog(object=self, operation='l')
 
-		nodeInList = self.searchNode(node, equal=True)
-		if (nodeInList is None) or (node != nodeInList):
-			LinkedListPictures.__printLog(object=node, operation='nF')
-			LinkedListPictures.__printLog(object=self, operation='l')
-			return
-		
-		# length(list) == 1
-		if nodeInList == self.pointer and nodeInList.getNext() is None:
-			self.pointer = None
-			LinkedListPictures.__printLog(object=self, operation='l')
-			print(Fore.CYAN + 'List: ' + Fore.RESET + str(self))
-		# First Node
-		elif nodeInList == self.pointer:
-			deleteFirstNode(nodeInList)
-		# Last Node
-		elif nodeInList.next is None:
-			deleteLastNode(nodeInList)
-		# Between Node
-		else:	
-			deleteBetweenNode(nodeInList)
+		for nodeInList in self:
+			if nodeInList == node:
+				# length(list) == 1
+				if nodeInList == self.pointer and nodeInList.getNext() is None:
+					self.pointer = None
+					LinkedListPictures.__printLog(object=self, operation='l')
+					return
+				# First Node
+				if nodeInList == self.pointer:
+					deleteFirstNode(nodeInList)
+					return
+				# Last Node
+				if nodeInList.next is None:
+					deleteLastNode(nodeInList)
+					return
+				# Between Node	
+				deleteBetweenNode(nodeInList)
+				return
+		# Not Found
+		LinkedListPictures.__printLog(object=node, operation='nF')
+		LinkedListPictures.__printLog(object=self, operation='l')
 
 	def deleteNodeByTime(self, year, month, day, hour, minute):
 		node = Node(address='', year=year, month=month, day=day, hour=hour, minute=minute)
