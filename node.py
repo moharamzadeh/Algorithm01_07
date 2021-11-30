@@ -4,8 +4,11 @@ class Node:
 	next = None
 	previous = None
 	def __init__(self, address, year, month, day, hour, minute, tag=False):
+		tempTimeDate = datetime.datetime(year=year, month=Node.changeDateToInt(month), day=1)
+		delta = datetime.timedelta(days=day-1, hours=hour, minutes=minute)
+
 		self.address = address
-		self.dateTime = datetime.datetime(year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
+		self.dateTime = tempTimeDate + delta
 		self.tag = tag
 
 	def createNodeByTimeDate(year, month, day, hour, minute):
