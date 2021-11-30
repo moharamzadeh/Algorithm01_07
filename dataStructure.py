@@ -65,27 +65,40 @@ class LinkedListPictures:
 		return True
 
 	def searchNode(self, node, equal=False):
-		def search(node):
-			nodeInList = self.pointer
-			if node is None or nodeInList is None:
-				return None
-			while nodeInList < node :
-				if nodeInList.next is None :
-					return nodeInList
-				nodeInList = nodeInList.next
-			if nodeInList > node: 
-				return nodeInList.getPrevious()
-			return nodeInList
+		def search(inputNode):
+			for node in self:
+				if node > inputNode:
+					return node.getPrevious()
+				if node.getNext() is None:
+					return node
+			return None
+			
+			
+		# 	nodeInList = self.pointer
+		# 	if node is None or nodeInList is None:
+		# 		return None
+		# 	while nodeInList < node :
+		# 		if nodeInList.next is None :
+		# 			return nodeInList
+		# 		nodeInList = nodeInList.next
+		# 	if nodeInList > node: 
+		# 		return nodeInList.getPrevious()
+		# 	return nodeInList
 
 		nodeInList = search(node)
-		if nodeInList is None:
-			return None
-		if equal is True:
-			if nodeInList == node:
-				return nodeInList
-			return None
+		if equal is not True:
+			return nodeInList
+		if nodeInList == node:
+			return nodeInList
+		return None
 
-		return nodeInList
+		
+		# if nodeInList is None:
+		# 	return nodeInList
+		# if equal is True:
+		# 	if nodeInList == node:
+		# 		return nodeInList
+		# 	return None
 
 	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
 		def searchNextNodeTrue(node):
