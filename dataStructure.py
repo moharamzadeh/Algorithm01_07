@@ -66,6 +66,8 @@ class LinkedListPictures:
 
 	def searchNode(self, node, equal=False):
 		def search(inputNode):
+			if inputNode is None:
+				return None
 			for node in self:
 				if node > inputNode:
 					return node.getPrevious()
@@ -80,55 +82,30 @@ class LinkedListPictures:
 			return nodeInList
 		return None
 
-	def searchNextNodeByTag(self, inputNode, tagIsImportant=None):
-		def searchNextNodeTrue(nodeInList):
-			if self.pointer is None:
-				LinkedListPictures.__printLog(object=inputNode, operation='nF')
-				return None
-			if nodeInList is None:
-				if self.pointer.getTag() == True:
-					LinkedListPictures.__printLog(object=self.pointer, operation='sNT', logObject=inputNode)
-					LinkedListPictures.__printLog(object=self, operation='l')
-					return self.pointer
-				LinkedListPictures.__printLog(object=inputNode, operation='nFNT')
+	def searchNextNodeByTag(self, node, tagIsImportant=None):
+		def searchNextNodeTrue(node):
+			if node is None:
+				LinkedListPictures.__printLog(object=self.pointer, operation='sN', logObject=node)
 				LinkedListPictures.__printLog(object=self, operation='l')
 				return None
-			if nodeInList.getNext() is None:
-				LinkedListPictures.__printLog(object=inputNode, operation='nFNT')
-				LinkedListPictures.__printLog(object=self, operation='l')
-				return None
-			nodeInList = nodeInList.getNext()
-			while nodeInList.getTag() != True:
-				nodeInList = nodeInList.getNext()
-				if nodeInList is None:
-					LinkedListPictures.__printLog(object=inputNode, operation='nFNT')
-					LinkedListPictures.__printLog(object=self, operation='l')
-					return None
-			LinkedListPictures.__printLog(object=nodeInList, operation='sNT', logObject=inputNode)
-			LinkedListPictures.__printLog(object=self, operation='l')
-			return nodeInList
+			for nodeInList in self:
+				if nodeInList >= node and nodeInList.getTag() is True:
+					return nodeInList
+			return None
 		
-		def searchNextNode(nodeInList):
-			if self.pointer is None:
-				LinkedListPictures.__printLog(object=inputNode, operation='nFN')
-				LinkedListPictures.__printLog(object=self, operation='l')
-				return None
-			if nodeInList is None:
-				LinkedListPictures.__printLog(object=self.pointer, operation='sN', logObject=inputNode)
+		def searchNextNode(node):
+			if node is None:
+				LinkedListPictures.__printLog(object=self.pointer, operation='sN', logObject=node)
 				LinkedListPictures.__printLog(object=self, operation='l')
 				return self.pointer
-			if nodeInList.getNext() is None:
-				LinkedListPictures.__printLog(object=inputNode, operation='nFN')
-				LinkedListPictures.__printLog(object=self, operation='l')
-				return None
-			LinkedListPictures.__printLog(object=nodeInList.getNext(), operation='sN', logObject=inputNode)
-			LinkedListPictures.__printLog(object=self, operation='l')
-			return nodeInList.getNext()
+			for nodeInList in self:
+				if nodeInList >= node:
+					return nodeInList.getNext()
+			return None
 
-		nodeInList = self.searchNode(inputNode)
 		if tagIsImportant == True:
-			return searchNextNodeTrue(nodeInList)
-		return searchNextNode(nodeInList)
+			return searchNextNodeTrue(node)
+		return searchNextNode(node)
 		
 	def deleteNode(self, node):
 		def deleteLastNode(node):
