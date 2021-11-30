@@ -197,6 +197,12 @@ class LinkedListPictures:
 	def __repr__(self):
 		print(self)
 
+	def __iter__(self):
+		pass
+
+	def __next__(self):
+		pass
+
 	def __printLog(object, operation, logObject=''):
 		operationDict = {
 		'd': Fore.RED +'deleted',
