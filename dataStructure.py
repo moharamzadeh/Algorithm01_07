@@ -7,19 +7,19 @@ class LinkedListPictures:
 		LinkedListPictures.__printLog(object=self, operation='l')
 
 	def addNode(self, node):
-		def addFirstNode(node):
+		def addFirstNode(inputNode):
 			pointer = self.pointer
 			if pointer is None:
-				self.pointer = node
-				LinkedListPictures.__printLog(object=node, operation='a')
+				self.pointer = inputNode
+				LinkedListPictures.__printLog(object=inputNode, operation='a')
 				LinkedListPictures.__printLog(object=self, operation='l')
 				return
-			node.setNext(pointer)
-			pointer.setPrevious(node)
+			inputNode.setNext(pointer)
+			pointer.setPrevious(inputNode)
 			# node <-> self.pointer
-			self.pointer = node
+			self.pointer = inputNode
 			# self.pointer -> node
-			LinkedListPictures.__printLog(object=node, operation='a')
+			LinkedListPictures.__printLog(object=inputNode, operation='a')
 			LinkedListPictures.__printLog(object=self, operation='l')
 
 		def addNextNode(inputNode, nodeInList):
