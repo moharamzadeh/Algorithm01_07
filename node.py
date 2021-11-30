@@ -34,10 +34,10 @@ class Node:
 		return listMonth[month]
 
 	def setNext(self, next):
-		Node.next = next
+		self.next = next
 
 	def setPrevious(self, previous):
-		Node.previous = previous
+		self.previous = previous
 
 	def setAddress(self, address):
 		self.address == address
@@ -76,10 +76,10 @@ class Node:
 		return self.dateTime
 
 	def getNext(self):
-		return Node.next
+		return self.next
 
 	def getPrevious(self):
-		return Node.previous
+		return self.previous
 
 	def getTag(self):
 		return self.tag
