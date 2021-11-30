@@ -197,11 +197,17 @@ class LinkedListPictures:
 	def __repr__(self):
 		print(self)
 
-	def __iter__(self):
-		pass
+	def __iter__(self):		
+		self.iterNode = self.pointer
+		return self
 
 	def __next__(self):
-		pass
+		if self.iterNode is None:
+			raise StopIteration
+		
+		result = self.iterNode
+		self.iterNode = self.iterNode.getNext()
+		return result
 
 	def __printLog(object, operation, logObject=''):
 		operationDict = {
