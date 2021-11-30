@@ -116,26 +116,26 @@ class LinkedListPictures:
 		return searchNextNode(node)
 		
 	def deleteNode(self, node):
-		def deleteLastNode(node):
-			preNode = node.getPrevious()
+		def deleteLastNode(nodeInList):
+			preNode = nodeInList.getPrevious()
 			preNode.setNext(None)
-			LinkedListPictures.__printLog(object=node, operation='d')
+			LinkedListPictures.__printLog(object=nodeInList, operation='d')
 			LinkedListPictures.__printLog(object=self, operation='l')
 		
-		def deleteFirstNode(node):
-			nextNode = node.getNext()
+		def deleteFirstNode(nodeInList):
+			nextNode = nodeInList.getNext()
 			self.pointer = nextNode
 			nextNode.setPrevious(None)
-			LinkedListPictures.__printLog(object=node, operation='d')
+			LinkedListPictures.__printLog(object=nodeInList, operation='d')
 			LinkedListPictures.__printLog(object=self, operation='l')
 
-		def deleteBetweenNode(node):
-			nextNode = node.getNext()
-			preNode = node.getPrevious()
+		def deleteBetweenNode(nodeInList):
+			nextNode = nodeInList.getNext()
+			preNode = nodeInList.getPrevious()
 			preNode.setNext(nextNode)
 			nextNode.setPrevious(preNode)
 			# preNode <-> nextNode
-			LinkedListPictures.__printLog(object=node, operation='d')
+			LinkedListPictures.__printLog(object=nodeInList, operation='d')
 			LinkedListPictures.__printLog(object=self, operation='l')
 
 		nodeInList = self.searchNode(node, equal=True)
