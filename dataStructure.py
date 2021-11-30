@@ -202,6 +202,9 @@ class LinkedListPictures:
 		self.iterNode = self.iterNode.getNext()
 		return result
 
+	def __len__(self):
+		pass
+
 	def __printLog(object, operation, logObject=''):
 		operationDict = {
 		'd': Fore.RED +'deleted',
