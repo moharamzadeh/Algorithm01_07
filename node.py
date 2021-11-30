@@ -1,12 +1,12 @@
 import datetime
 
 class Node:
+	next = None
+	previous = None
 	def __init__(self, address, year, month, day, hour, minute, tag=False):
 		self.address = address
 		self.dateTime = datetime.datetime(year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		self.tag = tag
-		self.next = None
-		self.previous = None
 
 	def createNodeByTimeDate(year, month, day, hour, minute):
 		node = Node(address='', year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
@@ -34,10 +34,10 @@ class Node:
 		return listMonth[month]
 
 	def setNext(self, next):
-		self.next = next
+		Node.next = next
 
 	def setPrevious(self, previous):
-		self.previous = previous
+		Node.previous = previous
 
 	def setAddress(self, address):
 		self.address == address
@@ -76,10 +76,10 @@ class Node:
 		return self.dateTime
 
 	def getNext(self):
-		return self.next
+		return Node.next
 
 	def getPrevious(self):
-		return self.previous
+		return Node.previous
 
 	def getTag(self):
 		return self.tag
