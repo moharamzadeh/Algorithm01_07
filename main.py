@@ -640,10 +640,10 @@ class Ui_all_in_one(object):
 
 	def searchInAll(self):
 		year2 = self.searchYear.text()
-		month2= self.searchMonth.currentText()
-		day2= self.searchDay.text()
-		hour2= self.searchHour.text()
-		minute2= self.searchMin.text()
+		month2 = self.searchMonth.currentText()
+		day2 = self.searchDay.text()
+		hour2 = self.searchHour.text()
+		minute2 = self.searchMin.text()
 		searcher = Node("", int(year2), month2, int(day2), int(hour2), int(minute2))
 		try:
 			infoTuple = self.l1.searchNextNodeByTag(searcher).getInformation()
@@ -661,10 +661,10 @@ class Ui_all_in_one(object):
 
 	def delete(self):
 		year3 = self.delYear.text()
-		month3= self.delCombo.currentText()
-		day3= self.delDay.text()
-		hour3= self.delHour.text()
-		minute3= self.delMin.text()
+		month3 = self.delCombo.currentText()
+		day3 = self.delDay.text()
+		hour3 = self.delHour.text()
+		minute3 = self.delMin.text()
 		self.selectDel = Node("", int(year3), month3, int(day3), int(hour3), int(minute3))
 		
 		nodeInList = self.l1.searchNode(node=self.selectDel, equal=True)
@@ -713,10 +713,10 @@ class Ui_all_in_one(object):
 
 	def evidenceTag(self):
 		year2 = self.searchYear.text()
-		month2= self.searchMonth.currentText()
-		day2= self.searchDay.text()
-		hour2= self.searchHour.text()
-		minute2= self.searchMin.text()
+		month2 = self.searchMonth.currentText()
+		day2 = self.searchDay.text()
+		hour2 = self.searchHour.text()
+		minute2 = self.searchMin.text()
 		tagSearcher = Node("", int(year2), month2, int(day2), int(hour2), int(minute2))
 		try:
 			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tagIsImportant= True).getInformation()
