@@ -668,17 +668,17 @@ class Ui_all_in_one(object):
 		day = self.delDay.text()
 		hour = self.delHour.text()
 		minute = self.delMin.text()
-		self.selectDel = Node("", int(year), month, int(day), int(hour), int(minute))
-		
-		nodeInList = self.l1.searchNode(node=self.selectDel, equal=True)
+		inputNode = Node("", int(year), month, int(day), int(hour), int(minute))
+		nodeInList = self.l1.searchNode(node=inputNode, equal=True)
+
 		if nodeInList is not None:
-			self.infoTuple = nodeInList.getInformation()
-			pixmap = QtGui.QPixmap(self.infoTuple[0])
+			infoTuple = nodeInList.getInformation()
+			pixmap = QtGui.QPixmap(infoTuple[0])
 			pixmapSize = pixmap.scaled(480, 430)
 			self.delPicturePlace.setPixmap(pixmap)
-			self.delCheckLabel.setText(str(self.infoTuple[-1]))
-			self.delTimeLabel.setText(str(self.infoTuple[1]))
-			self.delButton.clicked.connect(self.finalDel)
+			self.delCheckLabel.setText(str(infoTuple[-1]))
+			self.delTimeLabel.setText(str(infoTuple[1]))
+			self.delButton.clicked.connect(self.finalDel(nodeInList))
 			return
 
 		msg = QMessageBox()
@@ -686,27 +686,9 @@ class Ui_all_in_one(object):
 		msg.setText("There is no information for this date!\nPlease enter another timing.")
 		msg.setIcon(QMessageBox.Information)
 		x = msg.exec_()		
-		
-		
-		# try:
-		# 	self.infoTuple = self.l1.searchNode(self.selectDel, equal=True).getInformation()
-		# 	pixmap = QtGui.QPixmap(self.infoTuple[0])
-		# 	pixmapSize = pixmap.scaled(480, 430)
-		# 	self.delPicturePlace.setPixmap(pixmap)
-		# 	self.delCheckLabel.setText(str(self.infoTuple[-1]))
-		# 	self.delTimeLabel.setText(str(self.infoTuple[1]))
-		# 	self.delButton.clicked.connect(self.finalDel)
 
-		# except AttributeError:
-		# 	msg = QMessageBox()
-		# 	msg.setWindowTitle("Wrong Information")
-		# 	msg.setText("There is no information for this date!\nPlease enter another timing.")
-		# 	msg.setIcon(QMessageBox.Information)
-		# 	x = msg.exec_()
-
-	def finalDel(self):
-		newDel = Node(self.infoTuple[0],self.infoTuple[1].year, self.infoTuple[1].month, self.infoTuple[1].day, self.infoTuple[1].hour,self.infoTuple[1].minute, self.infoTuple[2])
-		self.l1.deleteNode(newDel)
+	def finalDel(self, node):
+		self.l1.deleteNode(node)
 		msg = QMessageBox()
 		msg.setWindowTitle("Deleted")
 		msg.setText("The picture is successfully deleted.")
