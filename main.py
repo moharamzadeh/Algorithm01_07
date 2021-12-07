@@ -733,6 +733,19 @@ class Ui_all_in_one(object):
 			msg.setIcon(QMessageBox.Information)
 			x = msg.exec_()
 		
+	def __printLog(object, operation, logObject=''):
+		operationDict = {
+		'd': Fore.RED +'deleted',
+		'a': Fore.LIGHTMAGENTA_EX + 'added',
+		'l': Fore.CYAN + 'list',
+		'nF': Fore.YELLOW + 'not found',
+		'nFN': Fore.YELLOW + 'Not Found next node',
+		'nFNT': Fore.YELLOW + 'not found next TRUE node',
+		's': Fore.GREEN + 'search',
+		'sN': Fore.GREEN + 'search next node',
+		'sNT': Fore.GREEN + 'search next TRUE node',
+		'ch': Fore.YELLOW + 'change node'}
+		print(operationDict[operation] + ' ' + str(logObject) + ' ' + Fore.RESET + str(object))
 		
 
 if __name__ == "__main__":
