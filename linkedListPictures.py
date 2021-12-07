@@ -15,15 +15,6 @@ class LinkedListPictures(LinkedList):
 		LinkedListPictures.__printLog(object=node, operation='a')
 		LinkedListPictures.__printLog(object=self, operation='l')
 
-	def addData(self, address, year, month, day, hour, minute, tag=False):
-		super().addData(address, year, month, day, hour, minute, tag=tag)
-
-	def existNode(self, node):
-		return super().existNode(node)
-
-	def searchNode(self, node, equal=False):
-		return super().searchNode(node, equal=equal)
-
 	def searchNextNodeByTag(self, node, tagIsImportant=None):
 		result = super().searchNextNodeByTag(node, tagIsImportant=tagIsImportant)
 		if str(result) == 'not found next TRUE node':
