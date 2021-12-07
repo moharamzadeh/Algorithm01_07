@@ -645,19 +645,22 @@ class Ui_all_in_one(object):
 		hour = self.searchHour.text()
 		minute = self.searchMin.text()
 		searcher = Node("", int(year), month, int(day), int(hour), int(minute))
-		try:
-			infoTuple = self.l1.searchNextNodeByTag(searcher).getInformation()
+		nodeInList = self.l1.searchNextNodeByTag(searcher)
+		
+		if nodeInList is not None:
+			infoTuple = nodeInList.getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
 			pixmapSize = pixmap.scaled(480, 430)
 			self.searchPicturePlace.setPixmap(pixmap)
 			self.searchCheckLabel.setText(str(infoTuple[-1]))
 			self.searchTimeLabel.setText(str(infoTuple[1]))
-		except AttributeError:
-			msg = QMessageBox()
-			msg.setWindowTitle("Wrong Information")
-			msg.setText("There is no information for this date!\nPlease enter another timing.")
-			msg.setIcon(QMessageBox.Information)
-			x = msg.exec_()
+			return
+		msg = QMessageBox()
+		msg.setWindowTitle("Wrong Information")
+		msg.setText("There is no information for this date!\nPlease enter another timing.")
+		msg.setIcon(QMessageBox.Information)
+		x = msg.exec_()
+		return
 
 	def delete(self):
 		year = self.delYear.text()
