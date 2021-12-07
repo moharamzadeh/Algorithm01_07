@@ -9,7 +9,7 @@ class LinkedListPictures(LinkedList):
 	def addNode(self, node):
 		result = super().addNode(node=node)
 		if result == 'change':
-			LinkedListPictures.__printLog(object=node, operation='ch', logObject=result)
+			LinkedListPictures.__printLog(operation='ch', logObject=node)
 			LinkedListPictures.__printLog(object=self, operation='l')
 			return
 
