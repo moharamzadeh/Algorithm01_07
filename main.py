@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from node import *
-from dataStructure import *
+from linkedListPictures import *
 import sys
 
 
