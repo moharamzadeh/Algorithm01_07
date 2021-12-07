@@ -1,7 +1,7 @@
 from colorama import Fore
 from node import *
 
-class LinkedListPictures:
+class LinkedList:
 	def __init__(self, node=None):
 		self.pointer = node
 
@@ -165,20 +165,20 @@ class LinkedListPictures:
 	def __len__(self):
 		pass
 
-class linkList(LinkedListPictures):
+class LinkedListPictures(LinkedList):
 	def __init__(self, node=None):
 		super().__init__(node=node)
-		linkList.__printLog(object=self, operation='l')
+		LinkedListPictures.__printLog(object=self, operation='l')
 
 	def addNode(self, node):
 		result = super().addNode(node=node)
 		if result == 'change':
-			linkList.__printLog(object=node, operation='ch', logObject=result)
-			linkList.__printLog(object=self, operation='l')
+			LinkedListPictures.__printLog(object=node, operation='ch', logObject=result)
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return
 
-		linkList.__printLog(object=node, operation='a')
-		linkList.__printLog(object=self, operation='l')
+		LinkedListPictures.__printLog(object=node, operation='a')
+		LinkedListPictures.__printLog(object=self, operation='l')
 
 	def addData(self, address, year, month, day, hour, minute, tag=False):
 		super().addData(address, year, month, day, hour, minute, tag=tag)
@@ -192,31 +192,31 @@ class linkList(LinkedListPictures):
 	def searchNextNodeByTag(self, node, tagIsImportant=None):
 		result = super().searchNextNodeByTag(node, tagIsImportant=tagIsImportant)
 		if str(result) == 'not found next TRUE node':
-			linkList.__printLog(operation='nFNT', logObject=node)
-			linkList.__printLog(object=self, operation='l')
+			LinkedListPictures.__printLog(operation='nFNT', logObject=node)
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return
 		if str(result) == 'not found next node':
-			linkList.__printLog(operation='nFN', logObject=node)
-			linkList.__printLog(object=self, operation='l')
+			LinkedListPictures.__printLog(operation='nFN', logObject=node)
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return
 
 		if tagIsImportant is True:
-			linkList.__printLog(object=result, operation='sNT', logObject=node)
-			linkList.__printLog(object=self, operation='l')
+			LinkedListPictures.__printLog(object=result, operation='sNT', logObject=node)
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return result
 			
-		linkList.__printLog(object=result, operation='sN', logObject=node)
-		linkList.__printLog(object=self, operation='l')
+		LinkedListPictures.__printLog(object=result, operation='sN', logObject=node)
+		LinkedListPictures.__printLog(object=self, operation='l')
 		return result
 
 	def deleteNode(self, node):
 		result = super().deleteNode(node)
 		if result is None:
-			linkList.__printLog(object=node, operation='nF')
-			linkList.__printLog(object=self, operation='l')
+			LinkedListPictures.__printLog(object=node, operation='nF')
+			LinkedListPictures.__printLog(object=self, operation='l')
 			return
-		linkList.__printLog(object=node, operation='d')
-		linkList.__printLog(object=self, operation='l')
+		LinkedListPictures.__printLog(object=node, operation='d')
+		LinkedListPictures.__printLog(object=self, operation='l')
 	
 	def __printLog(operation, logObject='', object=''):
 		operationDict = {

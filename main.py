@@ -631,7 +631,7 @@ class Ui_all_in_one(object):
 		if self.counter == 0:
 
 			pointer = Node(address, int(year), month, int(day), int(hour), int(minute), evidence)
-			self.list = linkList(pointer)
+			self.list = LinkedListPictures(pointer)
 			self.counter += 1
 		
 		elif self.counter >= 1:
