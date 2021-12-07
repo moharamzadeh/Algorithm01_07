@@ -660,7 +660,6 @@ class Ui_all_in_one(object):
 		msg.setText("There is no information for this date!\nPlease enter another timing.")
 		msg.setIcon(QMessageBox.Information)
 		x = msg.exec_()
-		return
 
 	def delete(self):
 		year = self.delYear.text()
@@ -685,7 +684,7 @@ class Ui_all_in_one(object):
 		msg.setWindowTitle("Wrong Information")
 		msg.setText("There is no information for this date!\nPlease enter another timing.")
 		msg.setIcon(QMessageBox.Information)
-		x = msg.exec_()		
+		x = msg.exec_()
 
 	def finalDel(self, node):
 		self.l1.deleteNode(node)
