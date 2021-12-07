@@ -639,12 +639,12 @@ class Ui_all_in_one(object):
 			self.l1.addData(address, int(year), month, int(day), int(hour), int(minute), evidence)
 
 	def searchInAll(self):
-		year2 = self.searchYear.text()
-		month2 = self.searchMonth.currentText()
-		day2 = self.searchDay.text()
-		hour2 = self.searchHour.text()
-		minute2 = self.searchMin.text()
-		searcher = Node("", int(year2), month2, int(day2), int(hour2), int(minute2))
+		year = self.searchYear.text()
+		month = self.searchMonth.currentText()
+		day = self.searchDay.text()
+		hour = self.searchHour.text()
+		minute = self.searchMin.text()
+		searcher = Node("", int(year), month, int(day), int(hour), int(minute))
 		try:
 			infoTuple = self.l1.searchNextNodeByTag(searcher).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
@@ -660,12 +660,12 @@ class Ui_all_in_one(object):
 			x = msg.exec_()
 
 	def delete(self):
-		year3 = self.delYear.text()
-		month3 = self.delCombo.currentText()
-		day3 = self.delDay.text()
-		hour3 = self.delHour.text()
-		minute3 = self.delMin.text()
-		self.selectDel = Node("", int(year3), month3, int(day3), int(hour3), int(minute3))
+		year = self.delYear.text()
+		month = self.delCombo.currentText()
+		day = self.delDay.text()
+		hour = self.delHour.text()
+		minute = self.delMin.text()
+		self.selectDel = Node("", int(year), month, int(day), int(hour), int(minute))
 		
 		nodeInList = self.l1.searchNode(node=self.selectDel, equal=True)
 		if nodeInList is not None:
@@ -712,12 +712,12 @@ class Ui_all_in_one(object):
 	
 
 	def evidenceTag(self):
-		year2 = self.searchYear.text()
-		month2 = self.searchMonth.currentText()
-		day2 = self.searchDay.text()
-		hour2 = self.searchHour.text()
-		minute2 = self.searchMin.text()
-		tagSearcher = Node("", int(year2), month2, int(day2), int(hour2), int(minute2))
+		year = self.searchYear.text()
+		month = self.searchMonth.currentText()
+		day = self.searchDay.text()
+		hour = self.searchHour.text()
+		minute = self.searchMin.text()
+		tagSearcher = Node("", int(year), month, int(day), int(hour), int(minute))
 		try:
 			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tagIsImportant= True).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
