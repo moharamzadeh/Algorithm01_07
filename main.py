@@ -631,12 +631,12 @@ class Ui_all_in_one(object):
 		if self.counter == 0:
 
 			pointer = Node(address, int(year), month, int(day), int(hour), int(minute), evidence)
-			self.l1 = LinkedListPictures(pointer)
+			self.list = linkList(pointer)
 			self.counter += 1
 		
 		elif self.counter >= 1:
 			pointer = Node(address, int(year), month, int(day), int(hour), int(minute), evidence)
-			self.l1.addData(address, int(year), month, int(day), int(hour), int(minute), evidence)
+			self.list.addData(address, int(year), month, int(day), int(hour), int(minute), evidence)
 
 	def searchInAll(self):
 		year = self.searchYear.text()
@@ -645,7 +645,7 @@ class Ui_all_in_one(object):
 		hour = self.searchHour.text()
 		minute = self.searchMin.text()
 		searcher = Node("", int(year), month, int(day), int(hour), int(minute))
-		nodeInList = self.l1.searchNextNodeByTag(searcher)
+		nodeInList = self.list.searchNextNodeByTag(searcher)
 		
 		if nodeInList is not None:
 			infoTuple = nodeInList.getInformation()
@@ -668,7 +668,7 @@ class Ui_all_in_one(object):
 		hour = self.delHour.text()
 		minute = self.delMin.text()
 		inputNode = Node("", int(year), month, int(day), int(hour), int(minute))
-		nodeInList = self.l1.searchNode(node=inputNode, equal=True)
+		nodeInList = self.list.searchNode(node=inputNode, equal=True)
 
 		if nodeInList is not None:
 			infoTuple = nodeInList.getInformation()
@@ -687,7 +687,7 @@ class Ui_all_in_one(object):
 		x = msg.exec_()
 
 	def finalDel(self, node):
-		self.l1.deleteNode(node)
+		self.list.deleteNode(node)
 		msg = QMessageBox()
 		msg.setWindowTitle("Deleted")
 		msg.setText("The picture is successfully deleted.")
@@ -703,7 +703,7 @@ class Ui_all_in_one(object):
 		minute = self.searchMin.text()
 		tagSearcher = Node("", int(year), month, int(day), int(hour), int(minute))
 		try:
-			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tagIsImportant= True).getInformation()
+			infoTuple = self.list.searchNextNodeByTag(tagSearcher, tagIsImportant= True).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
 			pixmapSize = pixmap.scaled(480, 430)
 			self.searchPicturePlace.setPixmap(pixmap)
