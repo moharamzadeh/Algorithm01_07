@@ -1,3 +1,4 @@
+from colorama import Fore
 from dataStructure import *
 
 class LinkedListPictures(LinkedList):

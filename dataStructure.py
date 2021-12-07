@@ -1,4 +1,3 @@
-from colorama import Fore
 from node import *
 
 class LinkedList:
