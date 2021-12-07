@@ -612,39 +612,39 @@ class Ui_all_in_one(object):
 		self.toolBox.setItemText(self.toolBox.indexOf(self.page_3), _translate("all_in_one", "Deleting a Picture"))
 
 	def addingPic(self):
-		self.addressTxt = self.address.text()
-		pixmap = QtGui.QPixmap(self.addressTxt)
+		address = self.address.text()
+		pixmap = QtGui.QPixmap(address)
 		pixmapSize = pixmap.scaled(480, 430)
 		self.picturePlace.setPixmap(pixmap)
-		self.a = self.address.text()
-		self.y = self.yearTxt.text()
-		self.mo= self.comboBox.currentText()
-		self.d= self.dayTxt.text()
-		self.h= self.hourTxt.text()
-		self.mn= self.minTxt.text()
+		year = self.yearTxt.text()
+		month = self.comboBox.currentText()
+		day = self.dayTxt.text()
+		hour = self.hourTxt.text()
+		minute = self.minTxt.text()
 		if self.yesRadio.isChecked():
-			self.ev = True
+			evidence = True
 		elif self.noRadio.isChecked:
-			self.ev = False
-		self.timeLabel.setText(f"{self.d} {self.mo} {self.y} {self.h}:{self.mn}")
-		self.checkLabel.setText(str(self.ev))
+			evidence = False
+		self.timeLabel.setText(f"{day} {month} {year} {hour}:{minute}")
+		self.checkLabel.setText(str(evidence))
 		
 		if self.counter == 0:
 
-			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
+			pointer = Node(address, int(year), month, int(day), int(hour), int(minute), evidence)
 			self.l1 = LinkedListPictures(pointer)
 			self.counter += 1
+		
 		elif self.counter >= 1:
-			pointer = Node(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
-			self.l1.addData(self.a, int(self.y), self.mo, int(self.d), int(self.h), int(self.mn), self.ev)
+			pointer = Node(address, int(year), month, int(day), int(hour), int(minute), evidence)
+			self.l1.addData(address, int(year), month, int(day), int(hour), int(minute), evidence)
 
 	def searchInAll(self):
-		self.y2 = self.searchYear.text()
-		self.mo2= self.searchMonth.currentText()
-		self.d2= self.searchDay.text()
-		self.h2= self.searchHour.text()
-		self.mn2= self.searchMin.text()
-		searcher = Node("", int(self.y2), self.mo2, int(self.d2), int(self.h2), int(self.mn2), self.ev)
+		year2 = self.searchYear.text()
+		month2= self.searchMonth.currentText()
+		day2= self.searchDay.text()
+		hour2= self.searchHour.text()
+		minute2= self.searchMin.text()
+		searcher = Node("", int(year2), month2, int(day2), int(hour2), int(minute2))
 		try:
 			infoTuple = self.l1.searchNextNodeByTag(searcher).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
@@ -660,12 +660,12 @@ class Ui_all_in_one(object):
 			x = msg.exec_()
 
 	def delete(self):
-		self.y3 = self.delYear.text()
-		self.mo3= self.delCombo.currentText()
-		self.d3= self.delDay.text()
-		self.h3= self.delHour.text()
-		self.mn3= self.delMin.text()
-		self.selectDel = Node("", int(self.y3), self.mo3, int(self.d3), int(self.h3), int(self.mn3), self.ev)
+		year3 = self.delYear.text()
+		month3= self.delCombo.currentText()
+		day3= self.delDay.text()
+		hour3= self.delHour.text()
+		minute3= self.delMin.text()
+		self.selectDel = Node("", int(year3), month3, int(day3), int(hour3), int(minute3))
 		
 		nodeInList = self.l1.searchNode(node=self.selectDel, equal=True)
 		if nodeInList is not None:
@@ -712,12 +712,12 @@ class Ui_all_in_one(object):
 	
 
 	def evidenceTag(self):
-		self.y2 = self.searchYear.text()
-		self.mo2= self.searchMonth.currentText()
-		self.d2= self.searchDay.text()
-		self.h2= self.searchHour.text()
-		self.mn2= self.searchMin.text()
-		tagSearcher = Node("", int(self.y2), self.mo2, int(self.d2), int(self.h2), int(self.mn2), self.ev)
+		year2 = self.searchYear.text()
+		month2= self.searchMonth.currentText()
+		day2= self.searchDay.text()
+		hour2= self.searchHour.text()
+		minute2= self.searchMin.text()
+		tagSearcher = Node("", int(year2), month2, int(day2), int(hour2), int(minute2))
 		try:
 			infoTuple = self.l1.searchNextNodeByTag(tagSearcher, tagIsImportant= True).getInformation()
 			pixmap = QtGui.QPixmap(infoTuple[0])
