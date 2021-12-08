@@ -44,6 +44,9 @@ class LinkedListPictures(LinkedList):
 			return
 		LinkedListPictures.__printLog(logObject=node, operation='d')
 		LinkedListPictures.__printLog(object=self, operation='l')
+
+	def __repr__(self):
+		LinkedListPictures.__printLog(object=self, operation='l')
 	
 	def __printLog(operation, logObject='', object=''):
 		operationDict = {
