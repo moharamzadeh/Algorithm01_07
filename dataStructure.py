@@ -68,9 +68,9 @@ class LinkedList:
 		nodeInList = search(node)
 		if equal is not True:
 			return nodeInList
-		if nodeInList == node:
-			return nodeInList
-		return None
+		if nodeInList is None or nodeInList != node:
+			return None
+		return nodeInList
 
 	def searchNextNodeByTag(self, node, tagIsImportant=None):
 		def searchNextNodeTrue(node):
