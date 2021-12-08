@@ -11,6 +11,10 @@ class Node:
 		self.dateTime = tempTimeDate + delta
 		self.tag = tag
 
+	def createNodeByNode(node):
+		newNode = Node(address=node.getAddress(), year=node.getDate().year, month=node.getDate().month, day=node.getDate().day, hour=node.getTime().hour, minute=node.getTime().minute, tag=node.getTag())
+		return newNode
+
 	def createNodeByTimeDate(year, month, day, hour, minute):
 		node = Node(address='', year=year, month=Node.changeDateToInt(month), day=day, hour=hour, minute=minute)
 		return node
