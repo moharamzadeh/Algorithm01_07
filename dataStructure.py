@@ -146,7 +146,7 @@ class LinkedList:
 	def __repr__(self):
 		print(self)
 
-	def __iter__(self):		
+	def __iter__(self):
 		self.iterNode = self.pointer
 		return self
 
