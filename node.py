@@ -136,7 +136,7 @@ class Node:
 		return 0
 
 	def __str__(self):
-		node = [str(os.path.splitext(os.path.basename(self.address))[0]), str(self.dateTime.strftime('%Y/%m/%d %H:%M.%S')), str(self.tag)]
+		node = [str(os.path.basename(self.address)), str(self.dateTime.strftime('%Y/%m/%d %H:%M.%S')), str(self.tag)]
 		return ' '.join(node)
 
 	def __repr__(self):
