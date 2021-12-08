@@ -138,10 +138,10 @@ class Node:
 		return 0
 
 	def __str__(self):
-		fileName = str(os.path.basename(self.address))
 		dateTime = str(self.dateTime.strftime('%Y/%m/%d %H:%M.%S'))
 		tag = str(self.tag)
-		node = [fileName, dateTime, tag]
+		fileName = str(os.path.basename(self.address))
+		node = [dateTime, tag, fileName]
 		return ' '.join(node)
 
 	def __repr__(self):
