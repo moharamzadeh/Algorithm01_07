@@ -5,12 +5,14 @@ class Node:
 	next = None
 	previous = None
 	def __init__(self, address, year, month, day, hour, minute, tag=False):
+		self.address = address
+		self.dateTime = Node.__realDateTime(year=year, month=month, day=day, hour=hour, minute=minute)
+		self.tag = tag
+
+	def __realDateTime(year, month, day, hour, minute):
 		tempTimeDate = datetime.datetime(year=year, month=Node.changeDateToInt(month), day=1)
 		delta = datetime.timedelta(days=day-1, hours=hour, minutes=minute)
-
-		self.address = address
-		self.dateTime = tempTimeDate + delta
-		self.tag = tag
+		return tempTimeDate + delta
 
 	def createNodeByNode(node):
 		newNode = Node(address=node.getAddress(), year=node.getDate().year, month=node.getDate().month, day=node.getDate().day, hour=node.getTime().hour, minute=node.getTime().minute, tag=node.getTag())
