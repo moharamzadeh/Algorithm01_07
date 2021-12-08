@@ -13,7 +13,7 @@ class LinkedListPictures(LinkedList):
 			LinkedListPictures.__printLog(object=self, operation='l')
 			return
 
-		LinkedListPictures.__printLog(object=node, operation='a')
+		LinkedListPictures.__printLog(logObject=node, operation='a')
 		LinkedListPictures.__printLog(object=self, operation='l')
 
 	def searchNextNodeByTag(self, node, tagIsImportant=None):
@@ -39,22 +39,22 @@ class LinkedListPictures(LinkedList):
 	def deleteNode(self, node):
 		result = super().deleteNode(node)
 		if result is None:
-			LinkedListPictures.__printLog(object=node, operation='nF')
+			LinkedListPictures.__printLog(logObject=node, operation='nF')
 			LinkedListPictures.__printLog(object=self, operation='l')
 			return
-		LinkedListPictures.__printLog(object=node, operation='d')
+		LinkedListPictures.__printLog(logObject=node, operation='d')
 		LinkedListPictures.__printLog(object=self, operation='l')
 	
 	def __printLog(operation, logObject='', object=''):
 		operationDict = {
-		'd': Fore.RED +'deleted',
-		'a': Fore.LIGHTMAGENTA_EX + 'added',
-		'l': Fore.CYAN + 'list',
-		'nF': Fore.YELLOW + 'not found',
-		'nFN': Fore.YELLOW + 'not found next node',
-		'nFNT': Fore.YELLOW + 'not found next TRUE node',
-		's': Fore.GREEN + 'search',
-		'sN': Fore.GREEN + 'search next node',
-		'sNT': Fore.GREEN + 'search next TRUE node',
-		'ch': Fore.YELLOW + 'change node'}
+		'd': Fore.LIGHTRED_EX +'deleted: ',
+		'a': Fore.LIGHTMAGENTA_EX + 'added: ',
+		'l': Fore.CYAN + 'list: ',
+		'nF': Fore.YELLOW + 'not found: ',
+		'nFN': Fore.YELLOW + 'not found next node: ',
+		'nFNT': Fore.YELLOW + 'not found next TRUE node: ',
+		's': Fore.GREEN + 'search: ',
+		'sN': Fore.GREEN + 'search next node: ',
+		'sNT': Fore.GREEN + 'search next TRUE node: ',
+		'ch': Fore.YELLOW + 'change node: '}
 		print(operationDict[operation] + ' ' + str(logObject) + ' ' + Fore.RESET + str(object))
